@@ -31,6 +31,7 @@
   .num{font-family:'Bebas Neue',sans-serif;font-size:clamp(4rem,18vw,6.5rem);line-height:.92;
     margin:22px 0 4px;color:var(--coral-deep);transition:color .35s ease,transform .35s ease}
   .num.flip{transform:scale(.94)}
+  @media (max-width:380px){.num{font-size:3.3rem}}
   .cap{font-family:'Raleway',sans-serif;font-weight:700;font-size:.95rem;color:var(--coral-deep);
     min-height:1.3em;transition:color .35s ease}
 
@@ -51,7 +52,8 @@
 
   /* reveal */
   .reveal{max-height:0;overflow:hidden;transition:max-height .4s ease}
-  .reveal.open{max-height:520px}
+  .reveal.open{max-height:700px}
+  @media (max-width:560px){.reveal.open{max-height:1300px}}
   .reveal-inner{padding:24px 34px 4px;text-align:left;border-top:1px solid #f0ead8;margin-top:26px}
   .reveal-inner p{font-size:.98rem;color:var(--text-mid);margin-bottom:16px}
   .reveal-inner p strong{color:var(--navy)}
