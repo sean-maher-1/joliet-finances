@@ -161,7 +161,7 @@
   @media (max-width:600px){
     section{padding:48px 0}
     p{font-size:1.05rem}
-    .eq .op{transform:rotate(90deg);justify-content:center;width:100%;font-size:1.6rem}
+    .eq .op{justify-content:center;width:100%;font-size:1.6rem}
     .eq .box{min-width:100%}
     .math .val{font-size:1.4rem}
     .tldr-card{padding:24px 20px}
@@ -177,6 +177,12 @@
   details.more>summary:hover{color:var(--gold-dim)}
   details.more .more-body{padding:2px 0 14px}
   details.more .more-body>*:first-child{margin-top:6px}
+
+  .take{font-family:'Raleway',sans-serif;font-weight:800;font-size:1.05rem;line-height:1.35;color:var(--navy);margin:0 0 18px}
+  .band-navy .take{color:#fff}
+
+  /* reading progress bar */
+  .progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--gold);z-index:500;transition:width .12s linear;will-change:width}
 
   /* ===== SITE NAV ===== */
   .sitenav{position:sticky;top:0;z-index:300;background:var(--navy);border-bottom:2px solid var(--gold)}
@@ -196,6 +202,7 @@
 </style>
 </head>
 <body>
+<div class="progress" id="progress" aria-hidden="true"></div>
 <nav class="sitenav">
   <div class="sitenav-inner">
     <a class="sitenav-brand" href="index.html" aria-label="Home">
@@ -251,7 +258,7 @@
 <section class="band-cream" id="start">
   <div class="wrap">
     <h2>Start at the kitchen table</h2>
-    <p class="lead">Picture adding up your family's finances. On one side, everything you have that's basically money: checking, savings, investments. On the other, everything you owe: credit cards, the car loan, the mortgage. Subtract. What's left tells you whether you're ahead or behind.</p>
+    <p class="lead">Add up your family's finances: everything you have that's basically money (checking, savings, investments) minus everything you owe (cards, car loan, mortgage). What's left tells you whether you're ahead or behind.</p>
 
     <div class="eq">
       <div class="box own"><div class="t">What you own</div><div class="d">Cash, savings &amp; investments</div></div>
@@ -261,12 +268,7 @@
       <div class="box net"><div class="t">Where you stand</div><div class="d">Ahead, or behind</div></div>
     </div>
 
-    <p style="margin-top:22px;">A city has this exact number. Accountants call it the <strong>net financial position</strong>. It answers one human question: <strong>does the city own more than it owes?</strong> Almost no city puts it on a billboard, so we did the math from Joliet's own report.</p>
-
-    <div class="aside">
-      <div class="who">Why shrink the number?</div>
-      <p>A billion dollars is an abstraction, too big to picture. The same bill split across your street is a conversation. So alongside the citywide total, we also show the numbers per household. It's like judging a car by miles per <em>gallon</em> instead of miles per tank: the smaller, shared number is the one people can actually picture and weigh.</p>
-    </div>
+    <p style="margin-top:22px;">A city has this exact number too; accountants call it its <strong>net financial position</strong>. Almost no city advertises it, so we did the math from Joliet's own report, and split it per household, because a billion dollars is impossible to picture but a per-home figure isn't.</p>
   </div>
 </section>
 
@@ -276,7 +278,7 @@
     <span class="kicker bad">What the books show</span>
     <h2>Joliet is behind, and its own books show it</h2>
     <div class="bignum answer-num">&minus;$1.24B</div>
-    <p class="lead">Joliet owes about <strong>$1.24 billion more</strong> than it holds in money-like assets. Most cities in this position need a hidden bill to reveal it. Joliet doesn't: the shortfall is already in the audit.</p>
+    <p class="lead">Joliet owes about <strong>$1.24 billion more</strong> than it holds in money-like assets. That figure isn't hidden or estimated; it's taken straight from the city's own audit.</p>
     <p class="perhh">Split across every household in town, that's about <span>&minus;$24,300 owed</span> per household.</p>
 
     <div class="aside">
@@ -289,9 +291,9 @@
 <line x1="56" y1="58" x2="748" y2="58" stroke="#0c2240" stroke-width="1.5"/>
 <text x="52" y="63" text-anchor="end" font-family="Lato,sans-serif" font-size="13" fill="#6b7280">$0</text>
 <line x1="156.7" y1="44" x2="156.7" y2="328" stroke="rgba(12,34,64,0.33)" stroke-width="1.3" stroke-dasharray="4,3"/>
-<text x="156.7" y="54" text-anchor="middle" font-family="Raleway,sans-serif" font-weight="800" font-size="10" fill="#b87d00" letter-spacing="0.05em">GASB 68</text>
+<text x="156.7" y="54" text-anchor="middle" font-family="Raleway,sans-serif" font-weight="800" font-size="10" fill="#b87d00" letter-spacing="0.05em">Pensions added</text>
 <line x1="342.2" y1="44" x2="342.2" y2="328" stroke="rgba(12,34,64,0.33)" stroke-width="1.3" stroke-dasharray="4,3"/>
-<text x="342.2" y="54" text-anchor="middle" font-family="Raleway,sans-serif" font-weight="800" font-size="10" fill="#b87d00" letter-spacing="0.05em">GASB 75</text>
+<text x="342.2" y="54" text-anchor="middle" font-family="Raleway,sans-serif" font-weight="800" font-size="10" fill="#b87d00" letter-spacing="0.05em">Health care added</text>
 <rect x="74.9" y="58.0" width="40" height="16.6" rx="3" fill="#fd6262"/>
 <text x="94.9" y="89.6" text-anchor="middle" font-family="Bebas Neue,sans-serif" font-size="14.5" fill="#0c2240">−$82M</text>
 <text x="94.9" y="364" text-anchor="middle" font-family="Lato,sans-serif" font-size="13" fill="#6b7280">2014</text>
@@ -326,7 +328,7 @@
 <text x="713.1" y="325.1" text-anchor="middle" font-family="Bebas Neue,sans-serif" font-size="14.5" fill="#0c2240">−$1.24B</text>
 <text x="713.1" y="364" text-anchor="middle" font-family="Lato,sans-serif" font-size="13" fill="#6b7280">2024</text>
 </svg>
-      <figcaption>The shortfall, year by year. The two big drops aren't new spending. They're two accounting rules that finally put old promises on the books: pensions in 2015 (GASB 68) and retiree health care in 2018 (GASB 75). Notice 2014, before either rule: the books looked almost healthy.</figcaption>
+      <figcaption>The shortfall, year by year. The two big drops aren't new spending. They're two accounting rules that finally put old promises on the books: pensions in 2015 and retiree health care in 2018. Notice 2014, before either rule: the books looked almost healthy.</figcaption>
     </figure>
 
     <p style="margin-top:26px;font-size:1.18rem;color:var(--navy);font-weight:700;">But that is only part of the picture.</p>
@@ -350,7 +352,7 @@
 
     <details class="more"><summary>We've seen this before: why it appeared so suddenly</summary>
     <div class="more-body">
-      <p>In 2015 a new accounting rule (GASB 68) forced cities to put their full pension promises on the books. In 2018 another (GASB 75) added retiree health care. Tens of billions appeared overnight across the country: debts that had <em>always</em> existed, suddenly visible. In 2014, before those rules, Joliet's books looked like a healthy city's: assets nearly four times its liabilities. The money was always owed. The rules just made Joliet show it.</p>
+      <p>In 2015 a new accounting rule forced cities to put their full pension promises on the books. In 2018 another rule added retiree health care. Tens of billions appeared overnight across the country: debts that had <em>always</em> existed, suddenly visible. In 2014, before those rules, Joliet's books looked like a healthy city's: assets nearly four times its liabilities. The money was always owed. The rules just made Joliet show it.</p>
     </div></details>
   </div>
 </section>
@@ -361,14 +363,17 @@
     <span class="kicker bad">What the books still don't show</span>
     <h2>One cost the books still leave out</h2>
     <p class="lead">Even after pensions and retiree health care, one real cost is still missing from every statement: what it would take to fix worn-out roads, pipes, and buildings.</p>
-    <p>Joliet's audit already admits the wear: about <strong>37% of the value</strong> of its roads, pipes, and buildings is used up. It just never adds up what fixing all that would cost. So we used the city's own two numbers, the method any resident can run with the <a class="il" href="https://www.strongtowns.org/decoder" target="_blank">Strong Towns worksheet</a>:</p>
+    <p>Joliet's audit already admits the wear: about <strong>37% of the value</strong> of its roads, pipes, and buildings is used up. It just never totals what fixing all that would cost. Run the city's own two numbers through the <a class="il" href="https://www.strongtowns.org/decoder" target="_blank">Strong Towns worksheet</a> and the replacement bill comes to an estimated <strong>$1.25 to $1.6 billion</strong>.</p>
 
+    <details class="more"><summary>Show the math</summary>
+    <div class="more-body">
     <div class="math">
       <div class="row"><div class="lab">What Joliet's infrastructure <b>cost to build</b></div><div class="val">$1.93B</div></div>
-      <div class="row"><div class="lab">How much is already <b>worn out</b> <span style="font-size:.85rem">(the audit's "accumulated depreciation")</span></div><div class="val">$712M</div></div>
+      <div class="row"><div class="lab">How much is already <b>worn out</b> <span style="font-size:.85rem">(what the audit calls "accumulated depreciation")</span></div><div class="val">$712M</div></div>
       <div class="row"><div class="lab">But that's in <b>old dollars</b>. Building costs have roughly doubled in 20 years, so restate it to today's prices&hellip;</div><div class="val">&times;~2</div></div>
       <div class="row out"><div class="lab"><b>Estimated repair bill</b> the books don't show</div><div class="val">$1.25B&ndash;$1.6B</div></div>
     </div>
+    </div></details>
 
     <p class="perhh" style="color:var(--coral-deep)">Per household, that's another <strong style="color:var(--coral-deep)">$24,000 to $31,000</strong>, on top of what's already owed.</p>
     <p style="font-size:.98rem;">This is a back-of-the-envelope range, on purpose. The point isn't the exact figure; it's that the figure is <strong>large</strong>, and nobody publishes it.</p>
@@ -379,8 +384,9 @@
 <section class="band-navy">
   <div class="wrap">
     <h2>Put them next to each other</h2>
+    <p class="take">Together, about $50,000 per household, hidden behind a headline that looks balanced.</p>
     <figure class="fade">
-<svg viewBox="0 0 720 392" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Per household: about 24,300 dollars already owed versus another 24,000 to 31,000 dollars in deferred repairs">
+<svg viewBox="0 0 720 392" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Per household: about 24,300 dollars already owed versus another 24,000 to 31,000 dollars in delayed repairs">
 <line x1="40" y1="320" x2="690" y2="320" stroke="#3c5a82" stroke-width="1.5"/>
 <rect x="120" y="132.9" width="180" height="187.1" rx="4" fill="#fd6262"/>
 <text x="210" y="118.9" text-anchor="middle" font-family="Bebas Neue,sans-serif" font-size="30" fill="#ff8a8a">−$24,300</text>
@@ -389,7 +395,7 @@
 <rect x="420" y="132.1" width="180" height="187.9" rx="4" fill="#fd6262"/>
 <rect x="420" y="78.2" width="180" height="53.9" fill="#fd6262" opacity="0.45"/>
 <text x="510" y="64.2" text-anchor="middle" font-family="Bebas Neue,sans-serif" font-size="30" fill="#ff8a8a">$24K–$31K</text>
-<text x="510" y="344" text-anchor="middle" font-family="Raleway,sans-serif" font-weight="700" font-size="14" fill="#e9f3ff">DEFERRED REPAIRS, per household</text>
+<text x="510" y="344" text-anchor="middle" font-family="Raleway,sans-serif" font-weight="700" font-size="14" fill="#e9f3ff">DELAYED REPAIRS, per household</text>
 <text x="510" y="364" text-anchor="middle" font-family="Lato,sans-serif" font-size="13" fill="#9bb6d6">on no statement, anywhere</text>
 </svg>
       <figcaption>Same households. One number the city reports, one it doesn't, and both point the same way.</figcaption>
@@ -397,11 +403,6 @@
 
     <p class="punch">A typical household is already <span>$24,300 behind</span>, with another ~$28,000 repair bill that no statement shows.</p>
     <p style="margin-top:16px">Joliet's official bottom line looks nearly balanced. These two bars are what that headline leaves out, and what residents are left to carry.</p>
-
-    <div class="seen">
-      <div class="h">The honest caveat</div>
-      <p>Joliet is not an outlier here. The pension and retiree-health shortfalls are shared by cities across Illinois, and the city is in the middle of an essential ~$1.45&nbsp;billion Lake Michigan water program: its aquifer is projected to no longer meet demand by 2030, so a new water supply isn't optional. The point isn't blame. It's that these numbers should be in plain view while there's still time to plan around them.</p>
-    </div>
   </div>
 </section>
 
@@ -409,8 +410,8 @@
 <section class="band-cream">
   <div class="wrap">
     <h2>This is difficult, but it's a to-do list.</h2>
-    <p class="lead">A &minus;$1.24 billion financial position is a difficult starting point, harder than most cities face. But a number you can see is a number you can plan around, and Joliet has real assets to build on: a large and growing economy, a rising tax base, and a water investment that secures the city's future. Whether those become a way out or a deeper shortfall depends on the kind of growth the city chooses, which is the next question.</p>
-    <p>There's also a choice worth naming plainly: a city can choose what it takes on next. Every new subdivision, road, and pipe is another maintenance promise owed forever. Funding what's already promised, and weighing what's added, are both choices.</p>
+    <p class="lead">A &minus;$1.24 billion position is a hard starting point, harder than most cities face. But Joliet isn't an outlier: the pension and retiree-health gaps are shared across Illinois, and much of the debt is the essential ~$1.45&nbsp;billion Lake Michigan water project, replacing an aquifer projected to fall short by 2030. The point isn't blame; it's that a number you can see is a number you can plan around.</p>
+    <p>Joliet has real assets too: a large economy, a rising tax base, and that water investment. Whether they become a way out or a deeper shortfall depends on the kind of growth the city chooses, the next question. And every new subdivision, road, and pipe is another maintenance promise owed forever, so funding what's already promised, and weighing what's added, are both choices.</p>
 
     <div class="ask">
       <div class="h">The asks</div>
@@ -419,7 +420,7 @@
 
     <div class="sayit">
       <div class="h">Say it this way</div>
-      <p>"These figures come from Joliet's own published reports. The city publishes no single estimate of its deferred repair costs. If this picture is wrong, the city should publish the numbers that show it."</p>
+      <p>"These figures come from Joliet's own published reports. The city publishes no single estimate of its delayed repair costs. If this picture is wrong, the city should publish the numbers that show it."</p>
     </div>
   </div>
 </section>
@@ -429,26 +430,26 @@
   <div class="wrap">
     <span class="kicker bad">The objection worth taking seriously</span>
     <h2>"Can't we just grow our way out?"</h2>
-    <p class="lead">It's the most natural response to these numbers: we're behind, so let's expand the tax base. Attract development, add warehouses and rooftops, incentivize new revenue. If the city were simply short on income, that instinct would be right.</p>
+    <p class="lead">It's the most natural response to these numbers: we're behind, so let's expand the tax base. Attract development, add warehouses and housing, offer incentives for new business. If the city were simply short on income, that instinct would be right.</p>
 
     <p>The short version: growth brings revenue now, but also new roads, pipes, and services to maintain for decades. It can't shrink the pension and retiree-health promises that make up most of the shortfall, and Joliet's incentives often divert the new revenue anyway. It's worth doing, but only the kind that covers its own long-term cost.</p>
 
     <details class="more"><summary>Read the full answer</summary>
     <div class="more-body">
-    <p>But the shortfall isn't mainly an income problem, and growth isn't free money. It's the one move that brings cash <em>now</em> and bills <em>forever</em>, which is exactly why it has to be done carefully. Three things make "aggressive, incentivized growth" an unreliable fix here.</p>
+    <p>But the shortfall isn't mainly an income problem, and growth isn't free money. It's the one move that brings cash <em>now</em> and bills <em>forever</em>, which is exactly why it has to be done carefully. Three things make "aggressive, subsidized growth" an unreliable fix here.</p>
 
     <p><strong>First, the shortfall is mostly promises growth can't touch.</strong> Most of the &minus;$1.24 billion is pensions and retiree health care already owed to people who worked for decades. A new warehouse doesn't shrink that by a dollar. What it adds is new roads, pipes, and pavement to maintain for decades, and if the city staffs up to serve it, new pension and retiree-health promises of its own. Growth can add to the liabilities it's meant to reduce.</p>
 
-    <p><strong>Second, incentives divert the revenue they promise.</strong> Joliet already runs at least six tax-increment-financing (TIF) districts, plus business-district allocations. By design, those capture the <em>new</em> tax growth and spend it inside the district, often for two decades or more. So incentivized development frequently never reaches the general fund or the pensions while the incentive runs.</p>
+    <p><strong>Second, incentives divert the revenue they promise.</strong> Joliet already runs at least six "tax-increment financing" districts, a common growth incentive, plus similar deals. By design, those capture the <em>new</em> tax growth and spend it inside the district, often for two decades or more. So subsidized development frequently never reaches the city's general budget or the pensions while the incentive runs.</p>
 
     <p><strong>Third, Joliet has already grown a lot.</strong> Over the last decade it became one of the country's largest logistics hubs, with a fast-rising property and sales tax base. Even so, the financial position fell over those years, from &minus;$82 million to &minus;$1.24 billion, much of it as pension and retiree-health promises came onto the books. A bigger tax base didn't come close to offsetting a legacy bill that size.</p>
 
     <p><strong>And won't the jobs pay off?</strong> Jobs are a real benefit to workers and the regional economy, but the path from jobs to city revenue is looser than it sounds. Property tax tracks the value of buildings, not the number of jobs, and the city keeps only a slice of each tax bill: in Illinois, school districts take the largest share, and the municipality a minority. Illinois cities can't levy a local income tax, so paychecks don't flow to City Hall, and warehouses generate little local sales tax because they aren't retail. The clearest way jobs lift city revenue is indirect: when workers become residents and add homes to the tax rolls, which also brings more to serve. And where an incentive is involved, much of the new property tax is diverted for years anyway. Jobs can be worth pursuing for the community; they don't automatically improve the city's books, which comes back to the same test: what does the city actually keep, after incentives, against what it has to spend?</p>
 
-    <p>There's also a particular catch with the kind of growth Joliet attracts. Warehouses and intermodal yards generate property tax, but they rely heavily on public infrastructure: thousands of trucks a day, and a single loaded truck does road damage many times that of a car. They tend to bring low jobs per acre, high pavement per acre, and a public incentive to land them. It can still pencil out, but only if someone checks.</p>
+    <p>There's also a particular catch with the kind of growth Joliet attracts. Warehouses and freight yards generate property tax, but they rely heavily on public infrastructure: thousands of trucks a day, and a single loaded truck does road damage many times that of a car. They tend to bring low jobs per acre, high pavement per acre, and a public incentive to land them. It can still pencil out, but only if someone checks.</p>
 
     <figure>
-<svg viewBox="0 0 760 328" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustrative comparison: development types that generate high value per acre on little infrastructure pay for themselves; land and infrastructure-heavy, often incentivized types do not.">
+<svg viewBox="0 0 760 328" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustrative comparison: development types that generate high value per acre on little infrastructure pay for themselves; land and infrastructure-heavy, often subsidized types do not.">
 <text x="12" y="24" font-family="Raleway,sans-serif" font-weight="800" font-size="13" fill="#0c2240" letter-spacing="0.04em">DOES IT PAY FOR ITSELF?</text>
 <rect x="430" y="14" width="12" height="12" rx="2" fill="#1a7a5a"/>
 <text x="447" y="24" font-family="Lato,sans-serif" font-size="11.5" fill="#4a4a4a">Value it generates / acre</text>
@@ -477,14 +478,14 @@
 <rect x="606" y="202" width="146" height="30" rx="15" fill="#f9dada"/>
 <text x="679" y="221" text-anchor="middle" font-family="Raleway,sans-serif" font-weight="800" font-size="11.5" fill="#c23434">✗  Needs a subsidy</text>
 <rect x="8" y="256" width="744" height="52" rx="7" fill="#fdeeee"/>
-<text x="194" y="274" text-anchor="end" font-family="Raleway,sans-serif" font-weight="800" font-size="12.5" fill="#0c2240">Warehouse / intermodal</text>
-<text x="194" y="289" text-anchor="end" font-family="Lato,sans-serif" font-size="11" fill="#6b7280">(often incentivized)</text>
+<text x="194" y="274" text-anchor="end" font-family="Raleway,sans-serif" font-weight="800" font-size="12.5" fill="#0c2240">Warehouse / freight</text>
+<text x="194" y="289" text-anchor="end" font-family="Lato,sans-serif" font-size="11" fill="#6b7280">(often subsidized)</text>
 <rect x="212" y="265" width="96.2" height="13" rx="2.5" fill="#1a7a5a"/>
 <rect x="212" y="282" width="303.4" height="13" rx="2.5" fill="#fd6262"/>
 <rect x="606" y="266" width="146" height="30" rx="15" fill="#f9dada"/>
 <text x="679" y="285" text-anchor="middle" font-family="Raleway,sans-serif" font-weight="800" font-size="11.5" fill="#c23434">✗  Needs a subsidy</text>
 </svg>
-      <figcaption>Illustrative of the pattern, not measured Joliet parcels. Forms that produce high value on little infrastructure tend to pay for themselves; land- and pavement-heavy, often-incentivized forms frequently don't, once you count the roads, pipes, and services the city maintains forever. The fix isn't to rank these by hand, it's to run the math on each project. (Value-per-acre pattern documented by Strong Towns and Urban3.)</figcaption>
+      <figcaption>Illustrative of the pattern, not measured Joliet parcels. Forms that produce high value on little infrastructure tend to pay for themselves; land- and pavement-heavy, often-subsidized forms frequently don't, once you count the roads, pipes, and services the city maintains forever. The fix isn't to rank these by hand, it's to run the math on each project. (Value-per-acre pattern documented by Strong Towns and Urban3.)</figcaption>
     </figure>
     </div></details>
 
@@ -495,7 +496,7 @@
 
     <div class="sayit">
       <div class="h">The test to ask for</div>
-      <p>"Before we incentivize anything, show the math: over its full life, will this generate more than it costs the city to serve and maintain, and will it help fund what we already owe, or add to it?"</p>
+      <p>"Before we subsidize anything, show the math: over its full life, will this generate more than it costs the city to serve and maintain, and will it help fund what we already owe, or add to it?"</p>
     </div>
   </div>
 </section>
@@ -505,7 +506,7 @@
   <div class="wrap">
     <h2>Anyone can start this conversation</h2>
     <p class="lead">You don't need a finance degree. The math is middle-school arithmetic, and every number is public.</p>
-    <p>A neighbor can raise it at a coffee shop. So can a city council member, a budget director, or a CPA who lives and breathes GASB rules. They'll all recognize the numbers, because the numbers are the city's own. That's the whole point: it's one number, at the kitchen table, that everyone can argue about together.</p>
+    <p>A neighbor can raise it at a coffee shop. So can a city council member, a budget director, or a CPA who lives and breathes accounting rules. They'll all recognize the numbers, because the numbers are the city's own. That's the whole point: it's one number, at the kitchen table, that everyone can argue about together.</p>
     <div class="btns">
       <a class="btn btn-gold" href="https://www.joliet.gov" target="_blank">Read Joliet's annual report</a>
       <a class="btn btn-line" href="https://www.strongtowns.org/decoder" target="_blank">Get the worksheet</a>
@@ -516,7 +517,7 @@
 <!-- FOOTER -->
 <footer>
   <div class="wrap">
-    <p><strong>How the numbers were built.</strong> <em>Net financial position</em> = Joliet's financial assets (cash, investments, receivables, plus deferred outflows) minus its total liabilities (plus deferred inflows), total primary government, from the 2024 Annual Comprehensive Financial Report; the yearly figures cover 2014&ndash;2024. The two large step-downs follow accounting standards GASB&nbsp;68 (pensions, first reflected in 2015) and GASB&nbsp;75 (retiree health/OPEB, 2018), which brought existing obligations onto the statements. The <em>repair-bill estimate</em> follows the Strong Towns <a href="https://www.strongtowns.org/decoder" target="_blank">Infrastructure Liability Worksheet</a>: the audit's accumulated depreciation ($711.6M) restated to today's construction prices (&times;1.75 to &times;2.25). Per-household figures use about 51,055 Joliet households (U.S. Census, ACS 2024).</p>
+    <p><strong>How the numbers were built.</strong> <em>Net financial position</em> = Joliet's money-like assets (cash, investments, and money owed to it) minus everything it owes, for the city as a whole, from the 2024 Annual Comprehensive Financial Report; the yearly figures cover 2014&ndash;2024. The two large step-downs follow accounting rules (GASB&nbsp;68 in 2015 and GASB&nbsp;75 in 2018) that first required cities to report their full pension and retiree-health promises. The <em>repair-bill estimate</em> follows the Strong Towns <a href="https://www.strongtowns.org/decoder" target="_blank">Infrastructure Liability Worksheet</a>: the wear the audit records ($711.6M) restated to today's construction prices (&times;1.75 to &times;2.25). Per-household figures use about 51,055 Joliet households (U.S. Census, ACS 2024).</p>
     <p class="dis">An independent #DoTheMath explainer, for educational purposes. Not affiliated with or endorsed by the City of Joliet. The repair-bill figure is a deliberately rough range; verify against the source documents before relying on it.</p>
   </div>
 </footer>
@@ -543,6 +544,20 @@
     },150);
     rev.classList.toggle('open',on);
   });
+})();
+</script>
+<script>
+(function(){
+  var p=document.getElementById('progress'); if(!p) return;
+  function upd(){
+    var h=document.documentElement;
+    var max=h.scrollHeight-h.clientHeight;
+    p.style.width=(max>0?(h.scrollTop/max*100):0)+'%';
+  }
+  window.addEventListener('scroll',upd,{passive:true});
+  window.addEventListener('resize',upd);
+  document.addEventListener('toggle',upd,true);
+  upd();
 })();
 </script>
 </body>
