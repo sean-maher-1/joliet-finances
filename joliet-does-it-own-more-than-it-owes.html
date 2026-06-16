@@ -167,6 +167,16 @@
     .tlabel{font-size:.9rem}
   }
 
+  /* collapsible "read more" */
+  details.more{margin:24px 0 0;border-top:1px solid #e4dcc4;border-bottom:1px solid #e4dcc4}
+  details.more>summary{font-family:'Raleway',sans-serif;font-weight:800;font-size:.82rem;letter-spacing:.03em;color:var(--navy);cursor:pointer;list-style:none;display:flex;align-items:center;gap:11px;padding:16px 2px}
+  details.more>summary::-webkit-details-marker{display:none}
+  details.more>summary::before{content:'+';display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--navy);color:#fff;font-weight:700;font-size:.95rem;line-height:1;flex-shrink:0}
+  details.more[open]>summary::before{content:'\2212'}
+  details.more>summary:hover{color:var(--gold-dim)}
+  details.more .more-body{padding:2px 0 14px}
+  details.more .more-body>*:first-child{margin-top:6px}
+
   /* ===== SITE NAV ===== */
   .sitenav{position:sticky;top:0;z-index:300;background:var(--navy);border-bottom:2px solid var(--gold)}
   .sitenav-inner{max-width:760px;margin:0 auto;display:flex;align-items:center;gap:12px;padding:9px 24px}
@@ -337,10 +347,10 @@
 
     <p>These are promises made over decades, to people who did the work or lent the money. The debt was always on the books; bonds and loans always show up. The striking part is the other two pieces: until a few years ago, the pension and retiree-health promises, together by far the largest, sat nowhere on the city's balance sheet.</p>
 
-    <div class="aside">
-      <div class="who">We've seen this before</div>
+    <details class="more"><summary>We've seen this before: why it appeared so suddenly</summary>
+    <div class="more-body">
       <p>In 2015 a new accounting rule (GASB 68) forced cities to put their full pension promises on the books. In 2018 another (GASB 75) added retiree health care. Tens of billions appeared overnight across the country: debts that had <em>always</em> existed, suddenly visible. In 2014, before those rules, Joliet's books looked like a healthy city's: assets nearly four times its liabilities. The money was always owed. The rules just made Joliet show it.</p>
-    </div>
+    </div></details>
   </div>
 </section>
 
@@ -419,17 +429,24 @@
     <span class="kicker bad">The objection worth taking seriously</span>
     <h2>"Can't we just grow our way out?"</h2>
     <p class="lead">It's the most natural response to these numbers: we're behind, so let's expand the tax base. Attract development, add warehouses and rooftops, incentivize new revenue. If the city were simply short on income, that instinct would be right.</p>
+
+    <p>The short version: growth brings revenue now, but also new roads, pipes, and services to maintain for decades. It can't shrink the pension and retiree-health promises that make up most of the shortfall, and Joliet's incentives often divert the new revenue anyway. It's worth doing, but only the kind that covers its own long-term cost.</p>
+
+    <details class="more"><summary>Read the full answer</summary>
+    <div class="more-body">
     <p>But the shortfall isn't mainly an income problem, and growth isn't free money. It's the one move that brings cash <em>now</em> and bills <em>forever</em>, which is exactly why it has to be done carefully. Three things make "aggressive, incentivized growth" an unreliable fix here.</p>
 
-    <p><strong>First, the shortfall is mostly promises growth can't touch.</strong> Most of the &minus;$1.24 billion is pensions and retiree health care already owed to people who worked for decades. A new warehouse doesn't shrink that by a dollar. It adds employees, which means more pension and retiree-health promises, and new pavement to maintain. Growth can add to the liability it's meant to reduce.</p>
+    <p><strong>First, the shortfall is mostly promises growth can't touch.</strong> Most of the &minus;$1.24 billion is pensions and retiree health care already owed to people who worked for decades. A new warehouse doesn't shrink that by a dollar. What it adds is new roads, pipes, and pavement to maintain for decades, and if the city staffs up to serve it, new pension and retiree-health promises of its own. Growth can add to the liabilities it's meant to reduce.</p>
 
     <p><strong>Second, incentives divert the revenue they promise.</strong> Joliet already runs at least six tax-increment-financing (TIF) districts, plus business-district allocations. By design, those capture the <em>new</em> tax growth and spend it inside the district, often for two decades or more. So incentivized development frequently never reaches the general fund or the pensions while the incentive runs.</p>
 
-    <p><strong>Third, Joliet has largely run this experiment.</strong> Over the last decade it became one of the country's largest logistics hubs, with a fast-rising property and sales tax base. Across those same years the financial position kept sliding, from &minus;$82 million to &minus;$1.24 billion. That growth didn't improve the balance sheet.</p>
+    <p><strong>Third, Joliet has already grown a lot.</strong> Over the last decade it became one of the country's largest logistics hubs, with a fast-rising property and sales tax base. Even so, the financial position fell over those years, from &minus;$82 million to &minus;$1.24 billion, much of it as pension and retiree-health promises came onto the books. A bigger tax base didn't come close to offsetting a legacy bill that size.</p>
+
+    <p><strong>And won't the jobs pay off?</strong> Jobs are a real benefit to workers and the regional economy, but the path from jobs to city revenue is looser than it sounds. Property tax tracks the value of buildings, not the number of jobs, and the city keeps only a slice of each tax bill: in Illinois, school districts take the largest share, and the municipality a minority. Illinois cities can't levy a local income tax, so paychecks don't flow to City Hall, and warehouses generate little local sales tax because they aren't retail. The clearest way jobs lift city revenue is indirect: when workers become residents and add homes to the tax rolls, which also brings more to serve. And where an incentive is involved, much of the new property tax is diverted for years anyway. Jobs can be worth pursuing for the community; they don't automatically improve the city's books, which comes back to the same test: what does the city actually keep, after incentives, against what it has to spend?</p>
 
     <p>There's also a particular catch with the kind of growth Joliet attracts. Warehouses and intermodal yards generate property tax, but they rely heavily on public infrastructure: thousands of trucks a day, and a single loaded truck does road damage many times that of a car. They tend to bring low jobs per acre, high pavement per acre, and a public incentive to land them. It can still pencil out, but only if someone checks.</p>
 
-    <figure class="fade">
+    <figure>
 <svg viewBox="0 0 760 328" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustrative comparison: development types that generate high value per acre on little infrastructure pay for themselves; land and infrastructure-heavy, often incentivized types do not.">
 <text x="12" y="24" font-family="Raleway,sans-serif" font-weight="800" font-size="13" fill="#0c2240" letter-spacing="0.04em">DOES IT PAY FOR ITSELF?</text>
 <rect x="430" y="14" width="12" height="12" rx="2" fill="#1a7a5a"/>
@@ -468,6 +485,7 @@
 </svg>
       <figcaption>Illustrative of the pattern, not measured Joliet parcels. Forms that produce high value on little infrastructure tend to pay for themselves; land- and pavement-heavy, often-incentivized forms frequently don't, once you count the roads, pipes, and services the city maintains forever. The fix isn't to rank these by hand, it's to run the math on each project. (Value-per-acre pattern documented by Strong Towns and Urban3.)</figcaption>
     </figure>
+    </div></details>
 
     <div class="aside">
       <div class="who">This isn't an argument against growth</div>
