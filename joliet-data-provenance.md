@@ -25,8 +25,8 @@ Statement of Revenues, Expenses & Changes in Net Position. Method follows the St
 | 2024 | 476.4 | 1216.3 | 1692.7 | 146.1 | 1480.4 | 383.7 | -25.3 | 359.3 | 1927.83 | 711.57 |
 
 \* 2023 revenue includes a one-time $99.8M non-cash contributed asset (Houbolt Road Bridge). Rate ratios
-use 2023 revenue normalized to $343.0M. 2021 enterprise interest interpolated ($4.53M) because the 2021
-CAFR's statement pages are scanned images. **2011–2012** were OCR-extracted from the scanned 2012 ACFR (no text layer); 2011 water/sewer interest is estimated (~$1.6M). Note: pre-2015 years exclude pensions (GASB 68) and pre-2018 exclude retiree health (GASB 75), so the early years sit on a different accounting basis.
+use 2023 revenue normalized to $343.0M. 2021 water/sewer interest is taken directly from the audited 2021 proprietary-fund Statement of Revenues,
+Expenses & Changes in Net Position (interest expense $3,267,583; governmental interest $89,238). **2011–2012** were OCR-extracted from the scanned 2012 ACFR (no text layer); 2011 water/sewer interest (~$1.6M) is an income-statement estimate, since the 2011 audit was not among the uploaded documents; the audited 2003-2012 Pledged Revenue Coverage schedule shows $1,923,594 of water-bond interest that year, corroborating the range. Note: pre-2015 years exclude pensions (GASB 68) and pre-2018 exclude retiree health (GASB 75), so the early years sit on a different accounting basis.
 
 ## Computed indicators (Strong Towns Finance Decoder)
 - **Net financial position ($M)** = Net position − net capital assets: -50.9, -65.6, -72.5, -81.8, -459.1, -501.5, -541.8, -882.3, -932.9, -998.4, -987.5, -1071.4, -1161.0, -1241.6
@@ -34,7 +34,7 @@ CAFR's statement pages are scanned images. **2011–2012** were OCR-extracted fr
 - **Financial assets ÷ liabilities**: 0.778, 0.732, 0.712, 0.679, 0.308, 0.269, 0.286, 0.245, 0.293, 0.330, 0.340, 0.409, 0.394, 0.334
 - **Total assets ÷ liabilities**: 4.23, 4.01, 3.91, 3.83, 1.42, 1.40, 1.38, 0.91, 0.84, 0.78, 0.91, 0.92, 0.99, 1.14
 - **Net book value ÷ cost (% remaining)**: 67.2, 66.1, 64.6, 62.9, 62.7, 61.9, 61.2, 61.0, 60.1, 59.4, 58.9, 59.8, 62.8, 63.1
-- **Interest ÷ revenue (%)**: 0.95, 1.00, 0.95, 0.84, 0.73, 0.50, 0.74, 0.65, 1.16, 1.12, 1.39, 2.18, 3.84, 2.62
+- **Interest ÷ revenue (%)**: 0.95, 1.00, 0.95, 0.84, 0.73, 0.50, 0.74, 0.65, 1.16, 1.12, 1.01, 2.18, 3.84, 2.62
 - **Government transfers ÷ revenue (%)**: 34.5, 32.6, 32.2, 30.2, 32.8, 32.3, 34.8, 29.2, 31.5, 29.6, 37.0, 32.2, 29.3, 29.0
 
 ## Headline figures (2024)
