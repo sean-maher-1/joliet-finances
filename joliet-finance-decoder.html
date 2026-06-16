@@ -746,6 +746,11 @@
   .chart-section.animated { opacity: 1; transform: translateY(0); }
 
   .chart-hint { font-size: 0.72rem; color: #9ca3af; text-align: right; margin-top: 6px; font-style: italic; }
+
+  /* cross-page links inside the sticky section nav */
+  a.toc-brand { color: var(--navy); text-decoration: none; }
+  a.toc-brand:hover { color: var(--gold-dim); }
+  .toc-links a.pg { color: var(--navy); font-weight: 800; }
 </style>
 </head>
 <body>
@@ -754,9 +759,13 @@
 <!-- STICKY NAV -->
 <nav class="toc">
   <div class="toc-inner">
-    <div class="toc-brand">Joliet · #DoTheMath</div>
+    <a class="toc-brand" href="index.html">Joliet · #DoTheMath</a>
     <div class="toc-divider"></div>
     <div class="toc-links">
+      <a class="pg" href="index.html">Home</a>
+      <a class="pg" href="joliet-does-it-own-more-than-it-owes.html">Explainer</a>
+      <a class="pg" href="joliet-net-position-toggle.html">Card</a>
+      <div class="toc-divider"></div>
       <a href="#dothemath">#DoTheMath</a>
       <a href="#context">Context</a>
       <a href="#summary">Summary</a>

@@ -34,9 +34,39 @@
   .go .arrow{color:var(--gold)}
   footer{max-width:860px;margin:0 auto;padding:28px 24px 60px;font-size:.82rem;color:#857f72;line-height:1.55}
   footer a{color:#9a7400;font-weight:700;text-decoration:none}
+
+  /* ===== SITE NAV ===== */
+  .sitenav{position:sticky;top:0;z-index:300;background:var(--navy);border-bottom:2px solid var(--gold)}
+  .sitenav-inner{max-width:860px;margin:0 auto;display:flex;align-items:center;gap:12px;padding:9px 22px}
+  .sitenav-brand{display:inline-flex;align-items:center;gap:8px;font-family:'Raleway',sans-serif;font-weight:900;font-size:.78rem;letter-spacing:.04em;text-transform:uppercase;color:var(--cream);text-decoration:none;white-space:nowrap}
+  .sitenav-brand svg{width:15px;height:15px;stroke:var(--gold);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+  .sitenav-brand:hover{color:#fff}
+  .sitenav-links{margin-left:auto;display:flex;gap:3px;flex-wrap:wrap;justify-content:flex-end}
+  .sitenav-links a{font-family:'Raleway',sans-serif;font-weight:700;font-size:.72rem;color:var(--sky,#c5dffc);text-decoration:none;padding:6px 12px;border-radius:999px;white-space:nowrap;transition:background .15s,color .15s}
+  .sitenav-links a:hover{background:rgba(197,223,252,.16);color:#fff}
+  .sitenav-links a.active{background:var(--gold);color:var(--navy)}
+  @media (max-width:560px){
+    .sitenav-inner{padding:8px 14px;gap:8px}
+    .sitenav-brand .brandtxt{display:none}
+    .sitenav-links a{font-size:.66rem;padding:5px 9px}
+  }
 </style>
 </head>
 <body>
+<nav class="sitenav">
+  <div class="sitenav-inner">
+    <a class="sitenav-brand" href="index.html" aria-label="Home">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10.5V20h13v-9.5"/></svg>
+      <span class="brandtxt">Joliet · #DoTheMath</span>
+    </a>
+    <div class="sitenav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="joliet-does-it-own-more-than-it-owes.html">Explainer</a>
+      <a href="joliet-finance-decoder.html">Decoder</a>
+      <a href="joliet-net-position-toggle.html">Card</a>
+    </div>
+  </div>
+</nav>
 <header class="hero">
   <div class="wrap">
     <span class="badge">#DoTheMath · City of Joliet, IL</span>
