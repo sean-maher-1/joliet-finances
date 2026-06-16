@@ -1,0 +1,1418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<title>Joliet Finance Decoder — #DoTheMath</title>
+
+<!-- Open Graph -->
+<meta property="og:title" content="Joliet's Fiscal Health: Decoded">
+<meta property="og:description" content="Seven indicators from eleven years of audited data. By the numbers, Joliet owes far more than it owns — with one line quietly holding up. A #DoTheMath analysis using the Strong Towns Finance Decoder.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Joliet Finance Decoder">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Joliet's Fiscal Health: Decoded">
+<meta name="twitter:description" content="Seven financial indicators, eleven years of ACFR data. Joliet owes far more than it owns — and the gap keeps widening.">
+
+<!-- SEO -->
+<meta name="description" content="Seven financial indicators from the City of Joliet's 2014-2024 Annual Comprehensive Financial Reports, charted with the Strong Towns Finance Decoder method.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
+
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800;900&family=Lato:ital,wght@0,400;0,700;1,400&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:     #0c2240;
+    --navy-mid: #163660;
+    --navy-light: #1e4a7a;
+    --sky:      #c5dffc;
+    --sky-pale: #e4effc;
+    --gold:     #FFA800;
+    --gold-dim: #cc8600;
+    --gold-pale:#fff4dc;
+    --coral:    #fd6262;
+    --coral-pale:#fde8e8;
+    --teal:     #1a7a5a;
+    --teal-dim: #15634a;
+    --teal-pale:#e0f4ee;
+    --cream:    #f5eed8;
+    --offwhite: #faf7ef;
+    --text:     #1a1a1a;
+    --text-mid: #4a4a4a;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Lato', sans-serif;
+    color: var(--text);
+    background: var(--offwhite);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: var(--navy);
+    color: var(--cream);
+    padding: 100px 24px 72px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(197,223,252,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(197,223,252,0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -120px; right: -60px;
+    width: 400px; height: 400px;
+    background: var(--coral);
+    opacity: 0.10;
+    border-radius: 50%;
+  }
+  .hero-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-badge {
+    display: inline-block;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--navy);
+    background: var(--gold);
+    padding: 6px 16px;
+    border-radius: 2px;
+    margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2.4rem, 6vw, 3.8rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+    color: var(--cream);
+  }
+  .hero h1 span { color: var(--gold); }
+  .hero .subtitle {
+    font-size: 1.15rem;
+    color: var(--sky);
+    max-width: 760px;
+    line-height: 1.55;
+    margin-bottom: 28px;
+  }
+  .hero .source {
+    font-size: 0.85rem;
+    color: rgba(197,223,252,0.5);
+  }
+  .hero .source a {
+    color: var(--gold);
+    text-decoration: none;
+  }
+
+  /* ===== LAYOUT ===== */
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ===== PRINCIPLE INTRO ===== */
+  .principle-intro {
+    padding: 56px 24px 48px;
+    background: var(--cream);
+    border-bottom: 3px solid var(--navy);
+  }
+  .principle-intro-inner {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+  .principle-intro h2 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 900;
+    font-size: 1.6rem;
+    color: var(--navy);
+    margin-bottom: 20px;
+  }
+  .principle-intro p {
+    font-size: 1.05rem;
+    color: var(--text-mid);
+    margin-bottom: 16px;
+    line-height: 1.6;
+  }
+  .principle-intro strong { color: var(--navy); }
+
+  /* ===== THREE QUESTIONS ===== */
+  .questions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    margin-top: 28px;
+    margin-bottom: 8px;
+  }
+  .question-card {
+    background: white;
+    border-radius: 6px;
+    padding: 22px 20px;
+    border-top: 4px solid var(--navy);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+  .question-card .q-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .question-card .q-name {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 800;
+    font-size: 0.85rem;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+  .question-card .q-text {
+    font-size: 0.88rem;
+    color: var(--text-mid);
+    line-height: 1.45;
+    font-style: italic;
+  }
+
+  /* ===== HOW DID WE GET HERE ===== */
+  .history-section {
+    padding: 64px 24px;
+    background: var(--offwhite);
+    border-bottom: 1px solid #e0dac8;
+  }
+  .history-inner {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+  .history-inner h2 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 900;
+    font-size: 1.6rem;
+    color: var(--navy);
+    margin-bottom: 20px;
+  }
+  .history-inner p {
+    font-size: 1rem;
+    color: var(--text-mid);
+    margin-bottom: 16px;
+    line-height: 1.65;
+  }
+  .history-inner strong { color: var(--navy); }
+
+  .context-expand { margin-top: 12px; }
+  .context-expand summary {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--navy);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 0;
+    list-style: none;
+  }
+  .context-expand summary::-webkit-details-marker { display: none; }
+  .context-expand summary::before {
+    content: '+';
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--navy);
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 700;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .context-expand[open] summary::before { content: '\2212'; }
+  .context-expand p {
+    font-size: 1rem;
+    color: var(--text-mid);
+    margin-top: 12px;
+    line-height: 1.65;
+  }
+
+  /* ===== EXECUTIVE SUMMARY ===== */
+  .summary {
+    padding: 56px 24px;
+    background: white;
+    border-bottom: 1px solid #e0dac8;
+  }
+  .summary-inner { max-width: 860px; margin: 0 auto; }
+  .summary h2 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 900;
+    font-size: 1.6rem;
+    color: var(--navy);
+    margin-bottom: 20px;
+  }
+  .summary p {
+    font-size: 1.05rem;
+    color: var(--text-mid);
+    margin-bottom: 14px;
+  }
+
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin: 28px 0 20px;
+  }
+  .stat-card {
+    background: var(--offwhite);
+    border-radius: 8px;
+    padding: 24px 20px;
+    border-top: 4px solid var(--navy);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    text-align: center;
+  }
+  .stat-card.stat-red   { border-top-color: var(--coral); }
+  .stat-card.stat-amber { border-top-color: var(--gold); }
+  .stat-card.stat-teal  { border-top-color: var(--teal); }
+  .stat-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.6rem;
+    line-height: 1;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .stat-card.stat-red   .stat-number { color: var(--coral-deep, #d23b3b); }
+  .stat-card.stat-teal  .stat-number { color: var(--teal); }
+  .stat-card.stat-amber .stat-number { color: var(--gold-dim); }
+  .stat-label {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 800;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-mid);
+    margin-bottom: 10px;
+  }
+  .stat-context {
+    font-size: 0.84rem;
+    color: var(--text-mid);
+    line-height: 1.45;
+  }
+  .summary-footnote {
+    font-size: 0.92rem;
+    color: var(--text-mid);
+    font-style: italic;
+  }
+
+  /* ===== CATEGORY GROUP ===== */
+  .category-group { border-bottom: 1px solid #e0dac8; }
+  .category-details { max-width: 860px; margin: 0 auto; }
+  .category-summary {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 28px 24px;
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+  }
+  .category-summary::-webkit-details-marker { display: none; }
+  .category-badge {
+    display: inline-block;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+  .category-question {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 900;
+    font-size: 1.25rem;
+    color: var(--navy);
+    flex: 1;
+  }
+  .category-chevron { width: 20px; height: 20px; flex-shrink: 0; position: relative; }
+  .category-chevron::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    border-right: 2.5px solid var(--navy);
+    border-bottom: 2.5px solid var(--navy);
+    transform: translate(-50%, -65%) rotate(45deg);
+    transition: transform 0.2s;
+  }
+  .category-details[open] .category-chevron::before {
+    transform: translate(-50%, -35%) rotate(-135deg);
+  }
+  .category-charts { padding: 0 0 16px; }
+  .category-group:nth-child(odd) { background: var(--offwhite); }
+  .category-group:nth-child(even) { background: white; }
+
+  /* ===== CHART SECTIONS ===== */
+  .chart-section {
+    padding: 40px 24px;
+    border-bottom: 1px solid rgba(224,218,200,0.5);
+  }
+  .chart-section:last-child { border-bottom: none; }
+  .chart-inner { max-width: 860px; margin: 0 auto; }
+  .chart-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+  .chart-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.4rem;
+    color: var(--sky);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 50px;
+    text-align: center;
+  }
+  .chart-title-group { flex: 1; min-width: 200px; }
+  .chart-category {
+    display: inline-block;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 2px;
+    margin-bottom: 8px;
+  }
+  .cat-sustainability { background: var(--teal-pale); color: #15634a; }
+  .cat-vulnerability  { background: var(--gold-pale);  color: #8a5d00; }
+  .cat-flexibility    { background: var(--sky-pale);   color: #14446a; }
+  .chart-title-group h3 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 900;
+    font-size: 1.35rem;
+    color: var(--navy);
+    line-height: 1.2;
+  }
+
+  .chart-canvas-wrap {
+    margin-bottom: 24px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(12,34,64,0.10);
+    background: white;
+    padding: 20px 16px 12px;
+    position: relative;
+    height: 380px;
+  }
+
+  .chart-body { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media (max-width: 640px) { .chart-body { grid-template-columns: 1fr; } }
+
+  .acct-title {
+    display: block;
+    font-size: 0.7em;
+    font-weight: 400;
+    color: #6b7280;
+    letter-spacing: 0.02em;
+    margin-top: 2px;
+  }
+
+  .chart-section.layout-wide .chart-canvas-wrap { max-width: none; }
+  .chart-section.layout-wide .chart-body { grid-template-columns: 1fr; }
+
+  .chart-what { font-size: 0.95rem; color: var(--text-mid); line-height: 1.55; }
+  .chart-what strong { color: var(--navy); }
+  .chart-takeaway {
+    background: var(--cream);
+    border-radius: 6px;
+    padding: 20px;
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+  .chart-takeaway .takeaway-label {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 800;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 8px;
+  }
+  .chart-section.watch .chart-takeaway .takeaway-label { color: var(--gold-dim); }
+
+  /* ===== BIG TAKEAWAY ===== */
+  .big-takeaway {
+    background: var(--navy);
+    color: var(--cream);
+    padding: 72px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .big-takeaway::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(197,223,252,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(197,223,252,0.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .big-takeaway-inner { max-width: 860px; margin: 0 auto; position: relative; z-index: 1; }
+  .big-takeaway h2 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 900;
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    line-height: 1.15;
+    margin-bottom: 24px;
+    color: var(--cream);
+  }
+  .big-takeaway h2 span { color: var(--gold); }
+  .big-takeaway p {
+    font-size: 1.05rem;
+    color: var(--sky);
+    max-width: 760px;
+    margin-bottom: 16px;
+    line-height: 1.6;
+  }
+  .big-takeaway .cta-row { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn-gold {
+    display: inline-block;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 800;
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--navy);
+    background: var(--gold);
+    padding: 14px 28px;
+    border-radius: 3px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .btn-gold:hover { background: #ffb833; }
+  .btn-outline {
+    display: inline-block;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 800;
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--cream);
+    border: 2px solid rgba(245,238,216,0.3);
+    padding: 12px 28px;
+    border-radius: 3px;
+    text-decoration: none;
+    transition: border-color 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--cream); }
+
+  /* ===== RESOURCES ===== */
+  .resources-section {
+    padding: 48px 24px;
+    background: var(--cream);
+    border-bottom: 1px solid #e0dac8;
+  }
+  .resources-inner { max-width: 860px; margin: 0 auto; }
+  .resources-inner h2 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 900;
+    font-size: 1.4rem;
+    color: var(--navy);
+    margin-bottom: 20px;
+  }
+  .resource-links { display: flex; flex-wrap: wrap; gap: 12px; }
+  .resource-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: white;
+    border: 1px solid #e0dac8;
+    border-radius: 6px;
+    padding: 14px 20px;
+    text-decoration: none;
+    color: var(--navy);
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .resource-link:hover { border-color: var(--gold); box-shadow: 0 2px 8px rgba(255,168,0,0.15); }
+  .resource-link .arrow { color: var(--gold); font-size: 1.1rem; }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--navy);
+    color: var(--sky);
+    padding: 40px 24px;
+    text-align: center;
+    border-top: 3px solid var(--gold);
+  }
+  footer p { font-size: 0.82rem; color: rgba(197,223,252,0.7); line-height: 1.6; max-width: 720px; margin: 0 auto 10px; }
+  footer a { color: var(--gold); font-weight: 700; text-decoration: none; }
+  footer strong { color: var(--cream); }
+  footer .disclaimer { font-size: 0.72rem; color: rgba(197,223,252,0.45); }
+
+  /* ===== NAV ===== */
+  .toc {
+    background: white;
+    border-bottom: 1px solid #e0dac8;
+    padding: 14px 24px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+  }
+  .toc-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    position: relative;
+  }
+  .toc-inner::-webkit-scrollbar { display: none; }
+  .toc-brand {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 900;
+    font-size: 0.75rem;
+    color: var(--navy);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .toc-divider { width: 1px; height: 20px; background: #d0c9b5; flex-shrink: 0; }
+  .toc-links { display: flex; gap: 4px; flex-shrink: 0; }
+  .toc-links a {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    font-size: 0.68rem;
+    color: var(--text-mid);
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    white-space: nowrap;
+    transition: background 0.15s, color 0.15s;
+  }
+  .toc-links a:hover, .toc-links a.active { background: var(--sky-pale); color: var(--navy); }
+  .toc-links a.active { background: var(--navy); color: white; }
+
+  .toc::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: 48px;
+    background: linear-gradient(to right, rgba(255,255,255,0), white 80%);
+    pointer-events: none;
+    z-index: 2;
+  }
+  .toc.scrolled-end::after { opacity: 0; }
+
+  .chartjs-tooltip { font-family: 'Lato', sans-serif !important; }
+
+  a.il {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: var(--gold);
+    text-underline-offset: 2px;
+    text-decoration-thickness: 2px;
+    transition: color 0.15s;
+  }
+  a.il:hover { color: var(--navy); }
+  .hero a.il, .big-takeaway a.il { text-decoration-color: var(--gold); }
+  .hero a.il:hover { color: var(--gold); }
+  .big-takeaway a.il:hover { color: var(--gold); }
+
+  @media (max-width: 768px) {
+    .hero { padding: 80px 20px 56px; }
+    .hero h1 { font-size: 2rem; }
+    .hero .subtitle { font-size: 1rem; }
+    .toc { padding: 10px 16px; }
+    .toc-brand { font-size: 0.65rem; }
+    .toc-links a { font-size: 0.6rem; padding: 4px 7px; }
+    .principle-intro { padding: 40px 20px 36px; }
+    .principle-intro h2 { font-size: 1.35rem; }
+    .principle-intro p { font-size: 0.95rem; }
+    .questions-grid { grid-template-columns: 1fr; gap: 12px; }
+    .history-section { padding: 40px 20px; }
+    .history-inner h2 { font-size: 1.35rem; }
+    .summary { padding: 40px 20px; }
+    .summary h2 { font-size: 1.35rem; }
+    .stat-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .stat-number { font-size: 2.1rem; }
+    .stat-context { font-size: 0.78rem; }
+    .category-summary { padding: 20px 16px; gap: 10px; }
+    .category-question { font-size: 1.05rem; }
+    .category-badge { font-size: 0.58rem; padding: 3px 8px; }
+    .chart-section { padding: 28px 16px; }
+    .chart-number { font-size: 1.8rem; width: 36px; }
+    .chart-title-group h3 { font-size: 1.1rem; }
+    .acct-title { font-size: 0.62em; }
+    .chart-canvas-wrap { padding: 14px 12px 8px; height: 340px; }
+    .chart-what { font-size: 0.88rem; }
+    .chart-takeaway { padding: 16px; font-size: 0.85rem; }
+    .big-takeaway { padding: 48px 20px; }
+    .big-takeaway h2 { font-size: 1.5rem; }
+    .big-takeaway p { font-size: 0.95rem; }
+    .cta-row { flex-direction: column; }
+    .btn-gold, .btn-outline { text-align: center; width: 100%; }
+    .resources-section { padding: 36px 20px; }
+    .resource-links { flex-direction: column; }
+    .resource-link { width: 100%; }
+    footer { padding: 32px 20px; }
+    footer p { font-size: 0.76rem; }
+  }
+
+  @media (max-width: 480px) {
+    .hero { padding: 68px 16px 44px; }
+    .hero h1 { font-size: 1.65rem; }
+    .hero-badge { font-size: 0.65rem; padding: 5px 12px; }
+    .stat-grid { grid-template-columns: 1fr; }
+    .toc-brand { display: none; }
+    .toc-divider { display: none; }
+    .toc-links { gap: 2px; }
+    .toc-links a { font-size: 0.58rem; padding: 4px 6px; }
+    .chart-header { gap: 8px; }
+    .chart-number { font-size: 1.5rem; width: 30px; }
+    .chart-title-group h3 { font-size: 1rem; }
+    .chart-canvas-wrap { padding: 12px 8px 8px; height: 300px; }
+    .category-summary { padding: 16px 12px; }
+    .category-question { font-size: 0.95rem; }
+  }
+
+  @media print {
+    .toc { display: none; }
+    .chart-section { break-inside: avoid; }
+    .category-details { display: block !important; }
+    .category-details > .category-charts { display: block !important; }
+    .category-chevron { display: none; }
+    .context-expand { display: block; }
+    .context-expand summary { display: none; }
+  }
+
+  .skip-link {
+    position: absolute;
+    top: -100px; left: 16px;
+    background: var(--navy);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 0 0 4px 4px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    z-index: 200;
+    transition: top 0.2s;
+    text-decoration: none;
+  }
+  .skip-link:focus { top: 0; }
+
+  .stat-card { transition: transform 0.2s, box-shadow 0.2s; }
+  .stat-card:hover { transform: translateY(-4px); box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
+
+  .category-group#sustainability { border-left: 4px solid var(--coral); }
+  .category-group#flexibility    { border-left: 4px solid var(--sky); }
+  .category-group#vulnerability  { border-left: 4px solid var(--gold); }
+
+  .chart-section.will-animate { opacity: 0; transform: translateY(24px); transition: opacity 0.5s ease-out, transform 0.5s ease-out; }
+  .chart-section.animated { opacity: 1; transform: translateY(0); }
+
+  .chart-hint { font-size: 0.72rem; color: #9ca3af; text-align: right; margin-top: 6px; font-style: italic; }
+</style>
+</head>
+<body>
+<a href="#dothemath" class="skip-link">Skip to main content</a>
+
+<!-- STICKY NAV -->
+<nav class="toc">
+  <div class="toc-inner">
+    <div class="toc-brand">Joliet · #DoTheMath</div>
+    <div class="toc-divider"></div>
+    <div class="toc-links">
+      <a href="#dothemath">#DoTheMath</a>
+      <a href="#context">Context</a>
+      <a href="#summary">Summary</a>
+      <a href="#sustainability">Sustainability</a>
+      <a href="#flexibility">Flexibility</a>
+      <a href="#vulnerability">Vulnerability</a>
+      <a href="#action">What to Watch</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">Finance Decoder Report</div>
+    <h1>Joliet's Fiscal<br>Health: <span>Decoded</span></h1>
+    <p class="subtitle">A city that can't cover what it owes can't freely invest in its future. Strong Towns calls this <a class="il" href="https://www.strongtowns.org/journal/2021-5-12-6-principles-for-building-a-strong-town" target="_blank">the solvency principle</a>. By that test, Joliet faces a real challenge: it owes far more than it holds in financial assets, and the gap has widened with every accounting era since 2014. The seven charts below show where the math is straining &mdash; and the one line that's quietly holding up.</p>
+    <p class="source">Data: 2014&ndash;2024 <a href="https://www.joliet.gov" target="_blank">City of Joliet Annual Comprehensive Financial Reports</a></p>
+  </div>
+</header>
+
+<!-- #DoTheMath INTRO -->
+<section class="principle-intro" id="dothemath">
+  <div class="principle-intro-inner">
+    <h2>The Finance Decoder &amp; <span style="color:var(--gold)">#DoTheMath</span></h2>
+    <p><strong>#DoTheMath</strong> means reading a city the way you'd read your own finances: not just this year's budget, but the whole balance sheet over time. The <a class="il" href="https://www.strongtowns.org/decoder" target="_blank"><strong>Strong Towns Finance Decoder</strong></a> pulls a handful of numbers from a city's audited annual reports and charts seven indicators. Every budget, project, and growth decision should be able to answer three questions:</p>
+
+    <div class="questions-grid">
+      <div class="question-card">
+        <div class="q-number">01</div>
+        <div class="q-name">Sustainability</div>
+        <div class="q-text">"Can Joliet sustain today's service levels over the long term?"</div>
+      </div>
+      <div class="question-card">
+        <div class="q-number">02</div>
+        <div class="q-name">Flexibility</div>
+        <div class="q-text">"How much budgetary room does Joliet have to absorb a surprise?"</div>
+      </div>
+      <div class="question-card">
+        <div class="q-number">03</div>
+        <div class="q-name">Vulnerability</div>
+        <div class="q-text">"How dependent is Joliet on money from other governments?"</div>
+      </div>
+    </div>
+
+    <p style="margin-top:24px;">Many cities that run this exercise find a balance sheet quietly sliding underwater. Joliet's has already crossed that line &mdash; which makes the Decoder less an early-warning system here than a clear-eyed diagnosis. The point of <a class="il" href="https://www.strongtowns.org/accounting" target="_blank"><strong>honest accounting</strong></a> is to size a problem while you can still plan around it.</p>
+  </div>
+</section>
+
+<!-- HOW DID WE GET HERE -->
+<section class="history-section" id="context">
+  <div class="history-inner">
+    <h2>How did Joliet get here?</h2>
+    <p>Joliet is one of Illinois's oldest and largest cities outside Chicago &mdash; a former canal-and-rail town of about 150,000 that has reinvented itself as a national <a class="il" href="https://www.greatlakesnow.org/2024/10/01/joliet-illinois-lake-michigan-drinking-water/" target="_blank">logistics and warehousing hub</a>, with the roads, water, and sewers that growth demands. It also carries a long legacy of pension and retiree-health promises to its police officers, firefighters, and staff.</p>
+    <p>Strong Towns founder Charles Marohn <a class="il" href="https://archive.strongtowns.org/journal/2017/12/8/the-real-reason-your-city-has-no-money" target="_blank">argues</a> that cities go broke for one reason: they take on more long-term obligations &mdash; debt, pensions, pipes to maintain forever &mdash; than current revenue can sustain, and the bill arrives a generation later. Joliet shows that pattern in unusually sharp relief, because two accounting reforms forced a long-deferred bill into daylight almost overnight.</p>
+    <details class="context-expand">
+      <summary>Read more</summary>
+      <p>Two lines on the charts below drop hard, and neither is new spending. In 2015, <strong>GASB Statement No. 68</strong> required cities to report their net pension liability on the government-wide statements; Joliet's net position fell roughly <strong>$326 million</strong> on adoption. In 2018, <strong>GASB Statement No. 75</strong> did the same for retiree health care (OPEB), knocking off another <strong>~$350 million</strong>. The promises had been building for decades &mdash; the rules simply made them visible. Separately, 2023 includes a one-time <strong>$99.8 million</strong> non-cash item: the Houbolt Road Bridge, contributed to the city (we exclude it from the rate ratios so the trends stay comparable). And looming over everything is the <a class="il" href="https://www.greatlakesnow.org/2024/10/01/joliet-illinois-lake-michigan-drinking-water/" target="_blank">~$1.45&nbsp;billion Lake Michigan water program</a>, which is replacing a depleting aquifer by 2030 and drives much of the recent rise in capital assets, debt, and interest.</p>
+    </details>
+  </div>
+</section>
+
+<!-- EXECUTIVE SUMMARY -->
+<section class="summary" id="summary">
+  <div class="summary-inner">
+    <h2>The Numbers at a Glance</h2>
+    <p>Five numbers every Joliet resident can check, pulled directly from the city's <strong>2024 Annual Comprehensive Financial Report (ACFR)</strong>. None of them is comfortable &mdash; but all of them are knowable, and one is holding up.</p>
+
+    <div class="stat-grid">
+      <div class="stat-card stat-red">
+        <div class="stat-number" data-target="1.24" data-prefix="−$" data-suffix="B" data-decimals="2">−$1.24B</div>
+        <div class="stat-label">Net financial position</div>
+        <div class="stat-context">Joliet owes about $1.24 billion more in total liabilities than it holds in financial assets &mdash; and that gap has widened in every accounting era since 2014.</div>
+      </div>
+      <div class="stat-card stat-red">
+        <div class="stat-number" data-target="0.33" data-prefix="$" data-decimals="2">$0.33</div>
+        <div class="stat-label">Financial assets per $1 owed</div>
+        <div class="stat-context">For every dollar of liabilities, the city holds about 33 cents in cash, investments, and receivables &mdash; far short of covering what it owes.</div>
+      </div>
+      <div class="stat-card stat-amber">
+        <div class="stat-number" data-target="1.1" data-suffix="&times;" data-decimals="1">1.1&times;</div>
+        <div class="stat-label">Total assets-to-liabilities</div>
+        <div class="stat-context">Counting roads and buildings too, Joliet's assets are about 1.1 times its liabilities &mdash; barely above the 1.0 solvency line, and below it from 2018&ndash;2023.</div>
+      </div>
+      <div class="stat-card stat-amber">
+        <div class="stat-number" data-target="63" data-suffix="%" data-decimals="0" data-countdown="100">63%</div>
+        <div class="stat-label">Infrastructure value remaining</div>
+        <div class="stat-context">About 37% of the value of Joliet's roads, pipes, and buildings is used up. The recent uptick reflects new, debt-financed water assets &mdash; not extra upkeep.</div>
+      </div>
+      <div class="stat-card stat-amber">
+        <div class="stat-number" data-target="2.6" data-suffix="%" data-decimals="1">2.6%</div>
+        <div class="stat-label">Revenue spent on interest</div>
+        <div class="stat-context">About two and a half cents of every revenue dollar goes to debt interest, up from well under a penny in 2018 as water-project borrowing grew.</div>
+      </div>
+    </div>
+
+    <p class="summary-footnote">The charts below break it down, grouped by those three questions.</p>
+  </div>
+</section>
+
+<!-- ===== SUSTAINABILITY ===== -->
+<section class="category-group" id="sustainability">
+  <details class="category-details" open>
+    <summary class="category-summary">
+      <span class="category-badge cat-sustainability">Sustainability</span>
+      <span class="category-question">Can Joliet keep this up long-term?</span>
+      <span class="category-chevron"></span>
+    </summary>
+    <div class="category-charts">
+
+      <!-- Chart 1: Net Financial Position -->
+      <div class="chart-section layout-wide watch" id="c1">
+        <div class="chart-inner">
+          <div class="chart-header">
+            <div class="chart-number">01</div>
+            <div class="chart-title-group">
+              <span class="chart-category cat-sustainability">Sustainability</span>
+              <h3>The Bottom Line: How Far Behind Is Joliet? <span class="acct-title">[Net Financial Position]</span></h3>
+            </div>
+          </div>
+          <div class="chart-canvas-wrap">
+            <canvas id="chart1"></canvas>
+            <div class="chart-hint">Hover or tap any point for the exact figure</div>
+          </div>
+          <div class="chart-body">
+            <div class="chart-what">
+              <strong>What this chart shows:</strong> everything Joliet holds in cash, investments, and receivables, minus everything it owes &mdash; pensions, retiree health care, bonds, and loans. The result is deeply negative and widening: <strong>&minus;$1.24 billion</strong> in 2024, down from &minus;$82 million in 2014. The two big step-downs (2015, 2018) are accounting rules putting old pension and retiree-health promises on the books.
+            </div>
+            <div class="chart-takeaway">
+              <div class="takeaway-label">Why it matters</div>
+              A negative net financial position means the city's promises are backed by future taxes, not money it has on hand. Joliet's gap isn't closing &mdash; it's the widest it has been in this window.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chart 2: Net Debt-to-Revenue -->
+      <div class="chart-section watch" id="c2">
+        <div class="chart-inner">
+          <div class="chart-header">
+            <div class="chart-number">02</div>
+            <div class="chart-title-group">
+              <span class="chart-category cat-sustainability">Sustainability</span>
+              <h3>How Many Years of Revenue Is the Gap? <span class="acct-title">[Net Debt-to-Total Revenues]</span></h3>
+            </div>
+          </div>
+          <div class="chart-canvas-wrap">
+            <canvas id="chart2"></canvas>
+            <div class="chart-hint">Hover or tap any point for the exact figure</div>
+          </div>
+          <div class="chart-body">
+            <div class="chart-what">
+              Net debt is total liabilities minus financial assets. For Joliet it runs about <strong>3.5&times;</strong> annual revenue in 2024 &mdash; it would take roughly three and a half years of <em>total</em> revenue to close the gap. In 2014, before pensions and OPEB were on the books, it was under half a year.
+            </div>
+            <div class="chart-takeaway">
+              <div class="takeaway-label">Read it this way</div>
+              Healthy cities sit near zero or below. Joliet climbed from 0.4&times; to ~3.5&times; as pension (2015) and retiree-health (2018) promises landed and debt grew. (2023 revenue is normalized to exclude a one-time $99.8M contributed bridge.)
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chart 3: Financial Assets-to-Liabilities -->
+      <div class="chart-section watch" id="c3">
+        <div class="chart-inner">
+          <div class="chart-header">
+            <div class="chart-number">03</div>
+            <div class="chart-title-group">
+              <span class="chart-category cat-sustainability">Sustainability</span>
+              <h3>Could Joliet Cover Its Bills Without Selling Anything? <span class="acct-title">[Financial Assets-to-Total Liabilities]</span></h3>
+            </div>
+          </div>
+          <div class="chart-canvas-wrap">
+            <canvas id="chart3"></canvas>
+            <div class="chart-hint">Hover or tap any point for the exact figure</div>
+          </div>
+          <div class="chart-body">
+            <div class="chart-what">
+              Strip out roads, pipes, and buildings. Count only liquid resources &mdash; cash, investments, receivables &mdash; and divide by total liabilities. Above <strong>1.0</strong>, the city could cover everything it owes without touching a physical asset. Joliet sits at <strong>0.33</strong> in 2024: about 33 cents on the dollar.
+            </div>
+            <div class="chart-takeaway">
+              <div class="takeaway-label">So what?</div>
+              Joliet would have to borrow or sell to cover most of what it owes. The ratio fell from 0.68 in 2014 toward 0.25&ndash;0.41 once pensions and OPEB came onto the books, and it has stayed there.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chart 4: Total Assets-to-Liabilities -->
+      <div class="chart-section watch" id="c4">
+        <div class="chart-inner">
+          <div class="chart-header">
+            <div class="chart-number">04</div>
+            <div class="chart-title-group">
+              <span class="chart-category cat-sustainability">Sustainability</span>
+              <h3>If Joliet Counted Everything, How Covered Is It? <span class="acct-title">[Assets-to-Liabilities]</span></h3>
+            </div>
+          </div>
+          <div class="chart-canvas-wrap">
+            <canvas id="chart4"></canvas>
+            <div class="chart-hint">Hover or tap any point for the exact figure</div>
+          </div>
+          <div class="chart-body">
+            <div class="chart-what">
+              Now count <em>everything</em> &mdash; roads, water mains, buildings, plus cash &mdash; against total obligations. Below 1.0, a government is underwater. Joliet was at <strong>3.8&times;</strong> in 2014, but just <strong>0.78&ndash;1.14&times;</strong> every year since 2018.
+            </div>
+            <div class="chart-takeaway">
+              <div class="takeaway-label">What it tells you</div>
+              Even counting every road and pipe it owns, Joliet barely covers its liabilities &mdash; and was underwater (below the 1.0 line) from 2018 through 2023. That's a thin cushion for a city this size.
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </details>
+</section>
+
+<!-- ===== FLEXIBILITY ===== -->
+<section class="category-group" id="flexibility">
+  <details class="category-details">
+    <summary class="category-summary">
+      <span class="category-badge cat-flexibility">Flexibility</span>
+      <span class="category-question">How much room does Joliet have to adapt?</span>
+      <span class="category-chevron"></span>
+    </summary>
+    <div class="category-charts">
+
+      <!-- Chart 5: Infrastructure condition -->
+      <div class="chart-section layout-wide" id="c5">
+        <div class="chart-inner">
+          <div class="chart-header">
+            <div class="chart-number">05</div>
+            <div class="chart-title-group">
+              <span class="chart-category cat-flexibility">Flexibility</span>
+              <h3>How Much Life Is Left in Joliet's Infrastructure? <span class="acct-title">[Net Book Value-to-Cost of Tangible Capital Assets]</span></h3>
+            </div>
+          </div>
+          <div class="chart-canvas-wrap">
+            <canvas id="chart5"></canvas>
+            <div class="chart-hint">Hover or tap any point for the exact figure</div>
+          </div>
+          <div class="chart-body">
+            <div class="chart-what">
+              How much useful life is left in Joliet's roads, pipes, buildings, and equipment, compared with what they cost to build? About <strong>63%</strong> remains in 2024 &mdash; and unusually, it has been <em>rising</em> lately, after dipping to 59% in 2021.
+            </div>
+            <div class="chart-takeaway">
+              <div class="takeaway-label">The one bright line &mdash; with a catch</div>
+              This is the indicator holding up, but read it carefully. The recent uptick isn't extra maintenance; it's the giant, debt-financed Lake Michigan water build adding brand-new assets to the average. New pipes lift this line and the debt line at the same time.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chart 6: Interest burden -->
+      <div class="chart-section watch" id="c6">
+        <div class="chart-inner">
+          <div class="chart-header">
+            <div class="chart-number">06</div>
+            <div class="chart-title-group">
+              <span class="chart-category cat-flexibility">Flexibility</span>
+              <h3>How Much Revenue Goes Straight to Interest? <span class="acct-title">[Interest-to-Total Revenues]</span></h3>
+            </div>
+          </div>
+          <div class="chart-canvas-wrap">
+            <canvas id="chart6"></canvas>
+            <div class="chart-hint">Hover or tap any point for the exact figure</div>
+          </div>
+          <div class="chart-body">
+            <div class="chart-what">
+              Of every dollar Joliet collects, how many cents go to interest before a penny of principal is repaid? About <strong>2.6 cents</strong> in 2024, up from well under one cent through 2018.
+            </div>
+            <div class="chart-takeaway">
+              <div class="takeaway-label">Why it's rising</div>
+              Still modest, but the trend is the opposite of reassuring: interest has climbed as the city borrows for the water program. Rising debt service competes with the maintenance and pension funding the other charts say Joliet needs. (Total interest, governmental plus water/sewer.)
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </details>
+</section>
+
+<!-- ===== VULNERABILITY ===== -->
+<section class="category-group" id="vulnerability">
+  <details class="category-details">
+    <summary class="category-summary">
+      <span class="category-badge cat-vulnerability">Vulnerability</span>
+      <span class="category-question">How dependent is Joliet on outside money?</span>
+      <span class="category-chevron"></span>
+    </summary>
+    <div class="category-charts">
+
+      <!-- Chart 7: Government transfers -->
+      <div class="chart-section watch" id="c7">
+        <div class="chart-inner">
+          <div class="chart-header">
+            <div class="chart-number">07</div>
+            <div class="chart-title-group">
+              <span class="chart-category cat-vulnerability">Vulnerability</span>
+              <h3>How Much Revenue Comes From Outside the City? <span class="acct-title">[Government Transfers-to-Total Revenue]</span></h3>
+            </div>
+          </div>
+          <div class="chart-canvas-wrap">
+            <canvas id="chart7"></canvas>
+            <div class="chart-hint">Hover or tap any point for the exact figure</div>
+          </div>
+          <div class="chart-body">
+            <div class="chart-what">
+              What share of revenue comes from outside Joliet's own taxes and fees &mdash; state-shared sales, income, and gaming taxes, plus grants and contributions? It swings between about <strong>29% and 37%</strong>.
+            </div>
+            <div class="chart-takeaway">
+              <div class="takeaway-label">The vulnerability</div>
+              Nearly a third of revenue depends on other governments. State-shared and gaming taxes are volatile &mdash; gaming alone fell from about $19M to $8M during COVID. Reliance on money the city doesn't control is a real risk. (2023's one-time $99.8M contributed bridge is excluded here.)
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </details>
+</section>
+
+<!-- CLOSING -->
+<section class="big-takeaway" id="action">
+  <div class="big-takeaway-inner">
+    <h2>Joliet doesn't have a hidden problem.<br><span>It has a visible one to fund.</span></h2>
+    <p>Six of the seven indicators point the same way: Joliet owes far more than it holds &mdash; assets barely cover liabilities, only about a third of what it owes is backed by financial assets, and the gap has widened with every accounting era since 2014. That's a hard place to start, and it's better to say so plainly.</p>
+    <p>The one line holding up is infrastructure: about <strong>63%</strong> of the value of the city's roads, pipes, and buildings remains, and it has risen lately. But that uptick is the giant, debt-financed Lake Michigan water build adding new assets &mdash; the same borrowing that pushes the debt and interest lines the wrong way. It buys an essential future water supply; it doesn't shrink what's already owed.</p>
+    <p><strong>The good news is that none of this is hidden anymore.</strong> Pensions and retiree health are on the books; the numbers are public. The work now is to fund the promises on a real schedule, publish a yearly repair number, and weigh every new commitment against what's already owed.</p>
+    <div class="cta-row">
+      <a href="https://www.joliet.gov" class="btn-gold" target="_blank">Read Joliet's Budget &amp; Capital Plan</a>
+      <a href="https://www.strongtowns.org/decoder" class="btn-outline" target="_blank">Run the Finance Decoder yourself</a>
+    </div>
+  </div>
+</section>
+
+<!-- RESOURCES -->
+<section class="resources-section">
+  <div class="resources-inner">
+    <h2>Hungry for more?</h2>
+    <p style="color:var(--text-mid);max-width:680px;margin:0 auto 1.5rem;font-size:0.95rem;line-height:1.6;">See what the city publishes, run the numbers yourself, or learn the method behind this page.</p>
+    <div class="resource-links">
+      <a href="https://www.joliet.gov" class="resource-link" target="_blank"><span class="arrow">&#10132;</span> Joliet's ACFRs (Annual Financial Reports)</a>
+      <a href="https://www.joliet.gov" class="resource-link" target="_blank"><span class="arrow">&#10132;</span> Joliet budgets &amp; capital plans</a>
+      <a href="https://www.strongtowns.org/decoder" class="resource-link" target="_blank"><span class="arrow">&#10132;</span> The Strong Towns Finance Decoder</a>
+      <a href="https://www.strongtowns.org/decoder-resources" class="resource-link" target="_blank"><span class="arrow">&#10132;</span> Finance Decoder worksheet &amp; instructions</a>
+      <a href="https://www.strongtowns.org/journal/2020-5-14-americas-growth-ponzi-scheme-md2020" class="resource-link" target="_blank"><span class="arrow">&#10132;</span> The Growth Ponzi Scheme</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p>Charts generated with the <a href="https://www.strongtowns.org/decoder" target="_blank">Strong Towns Finance Decoder</a> method, using <strong>City of Joliet</strong> Annual Comprehensive Financial Reports, 2014&ndash;2024 (total primary government). The two large step-downs follow GASB&nbsp;68 (pensions, first reflected 2015) and GASB&nbsp;75 (retiree health/OPEB, 2018). Rate ratios normalize 2023 revenue to exclude a one-time $99.8M contributed bridge; 2021 enterprise interest is interpolated because that year's statement pages were scanned images.</p>
+    <p class="disclaimer">An independent #DoTheMath analysis for educational purposes. Not affiliated with or endorsed by the City of Joliet. Figures are drawn from the cited public ACFRs; ratios follow the Strong Towns Finance Decoder definitions. Verify against the source documents before relying on them for decisions.</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+<script>
+// ===== DATA (City of Joliet, total primary government, 2014-2024) =====
+const years = [2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024];
+
+const data = {
+  netFinPosition:  [-81.8, -459.1, -501.5, -541.8, -882.3, -932.9, -998.4, -987.5, -1071.4, -1161.0, -1241.6], // $ millions
+  netDebtToRev:    [0.37, 2.05, 2.15, 2.21, 3.64, 3.63, 3.79, 2.96, 3.10, 3.38, 3.46],   // x revenue (positive = net debtor)
+  finAssetsToLiab: [0.679, 0.308, 0.269, 0.286, 0.245, 0.293, 0.330, 0.340, 0.409, 0.394, 0.334],
+  assetsToLiab:    [3.829, 1.415, 1.399, 1.380, 0.908, 0.844, 0.777, 0.905, 0.921, 0.990, 1.143],
+  netBookToTCA:    [62.9, 62.7, 61.9, 61.2, 61.0, 60.1, 59.4, 58.9, 59.8, 62.8, 63.1],   // % remaining
+  interestToRev:   [0.84, 0.73, 0.50, 0.74, 0.65, 1.16, 1.12, 1.39, 2.18, 3.84, 2.62],   // % of revenue
+  govTransfers:    [30.2, 32.8, 32.3, 34.8, 29.2, 31.5, 29.6, 37.0, 32.2, 29.3, 29.0]    // % of revenue
+};
+
+// ===== CHART DEFAULTS =====
+Chart.defaults.font.family = "'Lato', sans-serif";
+Chart.defaults.font.size = 12;
+Chart.defaults.color = '#4a4a4a';
+Chart.defaults.plugins.legend.display = false;
+
+const navy = '#0c2240';
+const gold = '#FFA800';
+const coral = '#fd6262';
+const coralDeep = '#d23b3b';
+const teal = '#1a7a5a';
+const tealPale = 'rgba(26,122,90,0.10)';
+const goldPale = 'rgba(255,168,0,0.12)';
+const coralPale = 'rgba(253,98,98,0.12)';
+
+const tooltipConfig = {
+  backgroundColor: navy,
+  titleFont: { weight: '700' },
+  bodyFont: { size: 13 },
+  padding: 12,
+  cornerRadius: 4
+};
+
+const yi = yr => years.indexOf(yr);
+
+// ---- reusable annotations ----
+const gasb68 = {
+  type: 'line', xMin: yi(2015), xMax: yi(2015),
+  borderColor: 'rgba(12,34,64,0.30)', borderWidth: 1.5, borderDash: [4,3],
+  label: { display: true, content: 'GASB 68: pensions', position: 'start',
+    backgroundColor: 'rgba(12,34,64,0.72)', color: '#fff',
+    font: { size: 10, family: "'Raleway', sans-serif", weight: '700' },
+    padding: { x: 6, y: 3 }, borderRadius: 2 }
+};
+const gasb75 = {
+  type: 'line', xMin: yi(2018), xMax: yi(2018),
+  borderColor: 'rgba(12,34,64,0.30)', borderWidth: 1.5, borderDash: [4,3],
+  label: { display: true, content: 'GASB 75: retiree health', position: 'start',
+    backgroundColor: 'rgba(12,34,64,0.72)', color: '#fff',
+    font: { size: 10, family: "'Raleway', sans-serif", weight: '700' },
+    padding: { x: 6, y: 3 }, borderRadius: 2 }
+};
+const zeroRef = {
+  type: 'line', yMin: 0, yMax: 0,
+  borderColor: 'rgba(12,34,64,0.35)', borderWidth: 1.5, borderDash: [6,4],
+  label: { display: true, content: 'Break-even', position: 'end',
+    backgroundColor: 'transparent', color: 'rgba(12,34,64,0.5)',
+    font: { size: 10, family: "'Lato', sans-serif", style: 'italic' } }
+};
+const solvencyRef = {
+  type: 'line', yMin: 1, yMax: 1,
+  borderColor: 'rgba(210,59,59,0.55)', borderWidth: 1.5, borderDash: [6,4],
+  label: { display: true, content: 'Solvency line (1.0)', position: 'end',
+    backgroundColor: 'transparent', color: 'rgba(210,59,59,0.8)',
+    font: { size: 10, family: "'Lato', sans-serif", style: 'italic' } }
+};
+const waterBox = {
+  type: 'box', xMin: yi(2021) - 0.5, xMax: yi(2024) + 0.5,
+  backgroundColor: 'rgba(26,122,90,0.06)', borderColor: 'rgba(26,122,90,0.2)', borderWidth: 1,
+  label: { display: true, content: 'Lake Michigan water build', position: { x: 'center', y: 'start' },
+    backgroundColor: 'rgba(26,122,90,0.78)', color: '#fff',
+    font: { size: 10, family: "'Raleway', sans-serif", weight: '700' },
+    padding: { x: 6, y: 3 }, borderRadius: 2 }
+};
+
+// ===== CHART REGISTRY =====
+const chartConfigs = {
+  chart1: {
+    dataKey: 'netFinPosition', color: coralDeep, fill: coralPale,
+    fmt: v => (v < 0 ? '−$' : '+$') + Math.abs(v).toFixed(1) + ' million',
+    yTitle: 'Net financial position ($ millions)',
+    annotations: { zero: zeroRef, g68: gasb68, g75: gasb75 },
+    yOpts: { min: -1300, max: 100, ticks: { stepSize: 200, callback: v => v === 0 ? '$0' : (v < 0 ? '−$' : '$') + (Math.abs(v)/1000).toFixed(1) + 'B' } }
+  },
+  chart2: {
+    dataKey: 'netDebtToRev', color: coralDeep, fill: coralPale,
+    fmt: v => v.toFixed(2) + '× revenue',
+    yTitle: 'Net debt ÷ annual revenue',
+    annotations: { zero: { ...zeroRef, label: { ...zeroRef.label, content: 'Zero net debt', position: 'start' } }, g68: gasb68, g75: gasb75 },
+    yOpts: { min: 0, max: 4, ticks: { stepSize: 0.5, callback: v => v.toFixed(1) + '×' } }
+  },
+  chart3: {
+    dataKey: 'finAssetsToLiab', color: coralDeep, fill: coralPale,
+    fmt: v => 'Ratio: ' + v.toFixed(2),
+    yTitle: 'Financial assets ÷ liabilities',
+    annotations: { solvency: solvencyRef, g68: gasb68, g75: gasb75 },
+    yOpts: { min: 0, max: 1.5, ticks: { stepSize: 0.25, callback: v => v.toFixed(2) } }
+  },
+  chart4: {
+    dataKey: 'assetsToLiab', color: gold, fill: goldPale,
+    fmt: v => 'Ratio: ' + v.toFixed(2),
+    yTitle: 'Total assets ÷ liabilities',
+    annotations: { solvency: { ...solvencyRef, label: { ...solvencyRef.label, content: 'Underwater below 1.0' } }, g68: gasb68, g75: gasb75 },
+    yOpts: { min: 0, max: 4, ticks: { stepSize: 0.5, callback: v => v.toFixed(1) + '×' } }
+  },
+  chart5: {
+    dataKey: 'netBookToTCA', color: teal, fill: tealPale,
+    fmt: v => v.toFixed(1) + '% of value remaining',
+    yTitle: '% of original value remaining',
+    annotations: { water: waterBox },
+    yOpts: { min: 55, max: 65, ticks: { stepSize: 2, callback: v => v + '%' } }
+  },
+  chart6: {
+    dataKey: 'interestToRev', color: gold, fill: goldPale,
+    fmt: v => v.toFixed(2) + '% of revenue',
+    yTitle: '% of total revenue',
+    annotations: { water: { ...waterBox, label: { ...waterBox.label, content: 'Water-program borrowing' } } },
+    yOpts: { min: 0, max: 5, ticks: { stepSize: 1, callback: v => v + '%' } }
+  },
+  chart7: {
+    dataKey: 'govTransfers', color: gold, fill: goldPale,
+    fmt: v => v.toFixed(1) + '% of revenue',
+    yTitle: '% of total revenue',
+    annotations: {},
+    yOpts: { min: 0, max: 40, ticks: { stepSize: 5, callback: v => v + '%' } }
+  }
+};
+
+// ===== BUILD ALL CHARTS =====
+const charts = {};
+const isMobile = window.innerWidth <= 768;
+const yTitleFont = { size: isMobile ? 10 : 12, family: "'Lato', sans-serif" };
+const yTitleColor = 'rgba(12,34,64,0.55)';
+const xScale = {
+  grid: { display: false },
+  ticks: { maxRotation: 0, autoSkip: true, maxTicksLimit: isMobile ? 6 : 11, font: { size: isMobile ? 10 : 11 } }
+};
+
+Object.keys(chartConfigs).forEach(canvasId => {
+  const cfg = chartConfigs[canvasId];
+  const ctx = document.getElementById(canvasId).getContext('2d');
+
+  charts[canvasId] = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: years,
+      datasets: [{
+        label: 'Joliet',
+        data: data[cfg.dataKey],
+        borderColor: cfg.color,
+        backgroundColor: cfg.fill,
+        borderWidth: 2.75,
+        pointRadius: 0,
+        pointHoverRadius: 5,
+        pointHoverBackgroundColor: cfg.color,
+        fill: true,
+        tension: 0.3,
+        spanGaps: true
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          ...tooltipConfig,
+          displayColors: false,
+          callbacks: {
+            title: items => 'Joliet · ' + items[0].label,
+            label: item => (item.parsed.y == null ? null : cfg.fmt(item.parsed.y))
+          }
+        },
+        annotation: { annotations: cfg.annotations }
+      },
+      scales: {
+        x: xScale,
+        y: {
+          grid: { color: 'rgba(0,0,0,0.05)' },
+          title: { display: true, text: cfg.yTitle, font: yTitleFont, color: yTitleColor },
+          ...cfg.yOpts
+        }
+      }
+    }
+  });
+});
+
+// ===== ACTIVE NAV HIGHLIGHTING =====
+(function(){
+  const tocLinks = document.querySelectorAll('.toc-links a');
+  const sections = [];
+  tocLinks.forEach(link => {
+    const id = link.getAttribute('href').replace('#', '');
+    const el = document.getElementById(id);
+    if (el) sections.push({ id, el, link });
+  });
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      const match = sections.find(s => s.el === entry.target);
+      if (match) match.visible = entry.isIntersecting;
+    });
+    const active = sections.find(s => s.visible);
+    tocLinks.forEach(l => l.classList.remove('active'));
+    if (active) active.link.classList.add('active');
+  }, { rootMargin: '-80px 0px -60% 0px', threshold: 0 });
+  sections.forEach(s => observer.observe(s.el));
+})();
+
+// ===== NAV SCROLL FADE =====
+(function(){
+  const toc = document.querySelector('.toc');
+  const inner = document.querySelector('.toc-inner');
+  function checkScroll() {
+    const atEnd = inner.scrollLeft + inner.clientWidth >= inner.scrollWidth - 4;
+    toc.classList.toggle('scrolled-end', atEnd);
+  }
+  inner.addEventListener('scroll', checkScroll);
+  window.addEventListener('resize', checkScroll);
+  checkScroll();
+})();
+
+// ===== CHART FADE-IN ON SCROLL =====
+(function(){
+  const chartSections = document.querySelectorAll('.chart-section');
+  chartSections.forEach(s => {
+    const parentDetails = s.closest('details');
+    if (!parentDetails || parentDetails.open) s.classList.add('will-animate');
+  });
+  const fadeObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animated');
+        fadeObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  chartSections.forEach(s => { if (s.classList.contains('will-animate')) fadeObserver.observe(s); });
+
+  document.querySelectorAll('.category-details').forEach(det => {
+    det.addEventListener('toggle', () => {
+      if (det.open) {
+        det.querySelectorAll('.chart-section').forEach((s, i) => {
+          if (!s.classList.contains('animated')) {
+            s.classList.add('will-animate');
+            setTimeout(() => s.classList.add('animated'), i * 120);
+          }
+        });
+      }
+    });
+  });
+})();
+
+// ===== ANIMATED STAT COUNTERS =====
+(function(){
+  const statNumbers = document.querySelectorAll('.stat-number');
+  const duration = 1200;
+
+  function animateCounter(el) {
+    const target = parseFloat(el.dataset.target);
+    const prefix = el.dataset.prefix || '';
+    const suffix = el.dataset.suffix || '';
+    const decimals = el.dataset.decimals ? parseInt(el.dataset.decimals, 10) : 0;
+    const countDownFrom = el.dataset.countdown ? parseFloat(el.dataset.countdown) : null;
+    const start = performance.now();
+
+    function step(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      let current = (countDownFrom !== null)
+        ? countDownFrom - (countDownFrom - target) * eased
+        : target * eased;
+      el.innerHTML = prefix + current.toFixed(decimals) + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  const statObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        if (entry.target.dataset.target) animateCounter(entry.target);
+        statObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  statNumbers.forEach(el => statObserver.observe(el));
+})();
+</script>
+</body>
+</html>

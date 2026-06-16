@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<title>Joliet: Net Financial Position</title>
+<meta name="description" content="Joliet's net financial position from its 2024 audit — already deep in the red before you add the infrastructure repair bill the books leave out.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600;700;800;900&family=Lato:wght@400;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0c2240; --cream:#f5eed8; --offwhite:#faf7ef;
+    --gold:#FFA800; --teal:#1a7a5a; --coral:#fd6262; --coral-deep:#d23b3b;
+    --text:#1a1a1a; --text-mid:#54514a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Lato',sans-serif;background:var(--offwhite);color:var(--text);
+    min-height:100vh;display:flex;align-items:center;justify-content:center;padding:32px 20px;line-height:1.6}
+
+  .card{width:100%;max-width:540px;background:#fff;border-radius:16px;
+    box-shadow:0 10px 40px rgba(12,34,64,.12);overflow:hidden;border:1px solid #ece4cf}
+  .card-top{padding:34px 34px 28px;text-align:center}
+
+  .kicker{font-family:'Raleway',sans-serif;font-weight:800;font-size:.72rem;letter-spacing:.13em;
+    text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+  h1{font-family:'Raleway',sans-serif;font-weight:900;font-size:1.55rem;color:var(--navy);
+    line-height:1.15;letter-spacing:-0.01em;margin-bottom:14px}
+  .intro{font-size:1.02rem;color:var(--text-mid);max-width:440px;margin:0 auto}
+
+  .num{font-family:'Bebas Neue',sans-serif;font-size:clamp(4rem,18vw,6.5rem);line-height:.92;
+    margin:22px 0 4px;color:var(--coral-deep);transition:color .35s ease,transform .35s ease}
+  .num.flip{transform:scale(.94)}
+  .cap{font-family:'Raleway',sans-serif;font-weight:700;font-size:.95rem;color:var(--coral-deep);
+    min-height:1.3em;transition:color .35s ease}
+
+  /* toggle row */
+  .toggle-row{display:flex;align-items:center;gap:14px;justify-content:center;
+    margin:26px auto 0;padding:16px 18px;background:var(--offwhite);border:1px solid #ece4cf;
+    border-radius:12px;max-width:440px;cursor:pointer;user-select:none}
+  .toggle-row:hover{border-color:#e0d6ba}
+  .switch{position:relative;flex-shrink:0;width:52px;height:30px}
+  .switch input{position:absolute;opacity:0;width:100%;height:100%;margin:0;cursor:pointer}
+  .track{position:absolute;inset:0;background:#cfc8b6;border-radius:999px;transition:background .25s ease}
+  .thumb{position:absolute;top:3px;left:3px;width:24px;height:24px;background:#fff;border-radius:50%;
+    box-shadow:0 1px 3px rgba(0,0,0,.25);transition:transform .25s ease}
+  .switch input:checked + .track{background:var(--coral)}
+  .switch input:checked + .track .thumb{transform:translateX(22px)}
+  .switch input:focus-visible + .track{outline:2px solid var(--navy);outline-offset:2px}
+  .tlabel{text-align:left;font-size:.95rem;color:var(--navy);font-weight:700}
+
+  /* reveal */
+  .reveal{max-height:0;overflow:hidden;transition:max-height .4s ease}
+  .reveal.open{max-height:520px}
+  .reveal-inner{padding:24px 34px 4px;text-align:left;border-top:1px solid #f0ead8;margin-top:26px}
+  .reveal-inner p{font-size:.98rem;color:var(--text-mid);margin-bottom:16px}
+  .reveal-inner p strong{color:var(--navy)}
+  .ledger{background:var(--offwhite);border:1px solid #ece4cf;border-radius:10px;padding:6px 16px}
+  .ledger .r{display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+    padding:11px 0;border-bottom:1px solid #ece4cf}
+  .ledger .r:last-child{border-bottom:none}
+  .ledger .l{font-size:.95rem;color:var(--text-mid)}
+  .ledger .v{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:var(--navy);white-space:nowrap}
+  .ledger .v.good{color:var(--teal)} .ledger .v.bad{color:var(--coral-deep)}
+  .ledger .r.total .l{font-weight:700;color:var(--navy);font-family:'Raleway',sans-serif}
+  .ledger .r.total{background:#fff;margin:0 -16px;padding:12px 16px;border-radius:0 0 10px 10px}
+  .range{font-size:.8rem;color:var(--text-mid);font-style:italic;text-align:center;margin-top:10px}
+
+  .foot{font-size:.76rem;color:#857f72;line-height:1.55;padding:20px 34px 30px;
+    background:var(--offwhite);border-top:1px solid #ece4cf;text-align:left}
+  .foot strong{color:var(--navy)} .foot a{color:#9a7400;font-weight:700;text-decoration:none}
+</style>
+</head>
+<body>
+  <main class="card">
+    <div class="card-top">
+      <div class="kicker">City of Joliet, IL · 2024</div>
+      <h1>Does Joliet own more than it owes?</h1>
+      <p class="intro">Its <strong>net financial position</strong> is everything the city owns that's money-like — cash, investments, receivables — minus everything it owes. Below zero means it owes more than it owns.</p>
+
+      <div class="num" id="num">&minus;$1.24B</div>
+      <div class="cap" id="cap">What Joliet's books already show</div>
+
+      <label class="toggle-row" for="t">
+        <span class="switch"><input type="checkbox" id="t" aria-describedby="cap"><span class="track"><span class="thumb"></span></span></span>
+        <span class="tlabel">Now add the infrastructure repair bill the books leave out</span>
+      </label>
+    </div>
+
+    <div class="reveal" id="reveal">
+      <div class="reveal-inner">
+        <p>Unlike a city that looks healthy on paper, Joliet's hole is already <strong>on</strong> the books: about <strong>&minus;$1.24 billion</strong>, driven mostly by retiree pensions and health care (OPEB) the city has promised but not funded, plus debt &mdash; much of it for the new Lake Michigan water supply. That's roughly <strong>&minus;$24,300 per household</strong>.</p>
+        <p>And there's still one big thing the books leave out: what it would cost to fix worn-out roads, pipes, and buildings. Joliet's audit shows about <strong>$712M</strong> of its infrastructure already used up; restated to today's construction prices, replacing it runs an estimated <strong>$1.25&ndash;1.6 billion</strong> more.</p>
+        <div class="ledger">
+          <div class="r"><span class="l">On the books (net financial position)</span><span class="v bad">&minus;$1.24B</span></div>
+          <div class="r"><span class="l">Estimated repair bill (not on the books)</span><span class="v bad">&minus;$1.4B</span></div>
+          <div class="r total"><span class="l">Closer to the real position</span><span class="v bad">&asymp; &minus;$2.7B</span></div>
+        </div>
+        <div class="range">The repair bill is a deliberately rough estimate; the combined figure lands somewhere around &minus;$2.5B to &minus;$2.8B &mdash; roughly &minus;$52,000 per household.</div>
+      </div>
+    </div>
+
+    <div class="foot">
+      <p style="margin-bottom:8px"><strong>Method.</strong> Net financial position = financial assets (incl. deferred outflows) &minus; total liabilities (incl. deferred inflows), total primary government, from Joliet's 2024 Annual Comprehensive Financial Report. The infrastructure figure restates the audit's accumulated depreciation ($711.6M) to today's construction prices (&times;1.75&ndash;2.25). A deliberately rough range, not a precise number. Per-household figures use ~51,055 Joliet households (U.S. Census, ACS 2024).</p>
+      <p style="margin:0;font-size:.72rem;color:#a09a8c">Independent #DoTheMath estimate. Not affiliated with or endorsed by the City of Joliet. Source: <a href="https://www.joliet.gov" target="_blank">City of Joliet ACFR</a>.</p>
+    </div>
+  </main>
+
+<script>
+(function(){
+  var t=document.getElementById('t'),num=document.getElementById('num'),
+      cap=document.getElementById('cap'),reveal=document.getElementById('reveal');
+  var ON={n:'≈ −$2.7B',c:'With the off-the-books repair bill added'},
+      OFF={n:'−$1.24B',c:"What Joliet's books already show"};
+  t.addEventListener('change',function(){
+    var on=t.checked;
+    num.classList.add('flip');
+    setTimeout(function(){
+      num.textContent=on?ON.n:OFF.n;
+      cap.textContent=on?ON.c:OFF.c;
+      num.classList.remove('flip');
+    },150);
+    reveal.classList.toggle('open',on);
+  });
+})();
+</script>
+</body>
+</html>

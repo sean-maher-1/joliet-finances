@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<title>Does Joliet Own More Than It Owes? — #DoTheMath</title>
+
+<meta property="og:title" content="Does Joliet own more than it owes?">
+<meta property="og:description" content="One number, explained at the kitchen table. Joliet's own books already show it owes about $1.24B more than it owns — before you add the repair bill the books leave out. A plain-English #DoTheMath explainer.">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="description" content="A plain-English look at Joliet's net financial position — the pension, retiree-health, and debt promises already on its books, plus the infrastructure repair bill that isn't. Household-finance terms anyone can follow.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏠</text></svg>">
+
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800;900&family=Lato:ital,wght@0,400;0,700;1,400&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0c2240; --navy-soft:#163660;
+    --sky:#c5dffc; --cream:#f5eed8; --offwhite:#faf7ef;
+    --gold:#FFA800; --gold-dim:#b87d00;
+    --coral:#fd6262; --coral-deep:#d23b3b;
+    --teal:#1a7a5a; --teal-deep:#15634a;
+    --text:#1a1a1a; --text-mid:#4a4a4a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Lato',sans-serif;color:var(--text);background:var(--offwhite);line-height:1.65;-webkit-font-smoothing:antialiased}
+
+  .wrap{max-width:760px;margin:0 auto;padding:0 24px}
+  section{padding:64px 0}
+  h2{font-family:'Raleway',sans-serif;font-weight:900;font-size:clamp(1.6rem,4vw,2.1rem);color:var(--navy);line-height:1.12;margin-bottom:20px;letter-spacing:-0.01em}
+  p{font-size:1.12rem;color:var(--text-mid);margin-bottom:18px}
+  p strong{color:var(--navy)}
+  .lead{font-size:1.22rem}
+  a.il{color:var(--navy);text-decoration:underline;text-decoration-color:var(--gold);text-decoration-thickness:2px;text-underline-offset:2px}
+
+  .kicker{display:inline-block;font-family:'Raleway',sans-serif;font-weight:800;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:14px}
+  .kicker.good{color:var(--teal)}
+  .kicker.bad{color:var(--coral-deep)}
+
+  /* ===== HERO ===== */
+  .hero{background:var(--navy);color:var(--cream);padding:104px 0 80px;position:relative;overflow:hidden}
+  .hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(197,223,252,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(197,223,252,.045) 1px,transparent 1px);background-size:46px 46px}
+  .hero::after{content:'';position:absolute;bottom:-140px;right:-80px;width:420px;height:420px;border-radius:50%;background:var(--coral);opacity:.12}
+  .hero .wrap{position:relative;z-index:1}
+  .badge{display:inline-block;font-family:'Raleway',sans-serif;font-weight:700;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);background:var(--gold);padding:6px 16px;border-radius:2px;margin-bottom:26px}
+  .hero h1{font-family:'Raleway',sans-serif;font-weight:900;font-size:clamp(2.5rem,7vw,4rem);line-height:1.03;letter-spacing:-0.02em;color:var(--cream);margin-bottom:20px}
+  .hero h1 span{color:var(--gold)}
+  .hero .sub{font-size:1.2rem;color:var(--sky);max-width:620px;margin-bottom:22px}
+  .hero .src{font-size:.85rem;color:rgba(197,223,252,.5)}
+
+  .band-cream{background:var(--cream);border-top:3px solid var(--navy);border-bottom:3px solid var(--navy)}
+  .band-white{background:#fff}
+  .band-off{background:var(--offwhite)}
+  .band-navy{background:var(--navy);color:var(--cream)}
+  .band-navy h2{color:var(--cream)}
+  .band-navy p{color:var(--sky)}
+  .band-navy p strong{color:#fff}
+
+  .aside{border-left:4px solid var(--gold);background:rgba(255,168,0,.08);padding:18px 22px;border-radius:0 8px 8px 0;margin:26px 0 0}
+  .aside p{font-size:1rem;margin-bottom:0;color:var(--text-mid)}
+  .aside .who{font-family:'Raleway',sans-serif;font-weight:800;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:8px}
+
+  .bignum{font-family:'Bebas Neue',sans-serif;line-height:.9;letter-spacing:.01em}
+  .answer-num{font-size:clamp(4.5rem,16vw,8rem);color:var(--coral-deep);margin:4px 0 6px}
+  .perhh{font-size:1.12rem;color:var(--navy);font-weight:700;margin-bottom:8px}
+  .perhh span{color:var(--coral-deep)}
+
+  .eq{display:flex;align-items:stretch;gap:12px;flex-wrap:wrap;margin:26px 0 6px}
+  .eq .box{flex:1;min-width:150px;background:#fff;border:1px solid #e4dcc4;border-radius:10px;padding:18px 16px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+  .eq .box .t{font-family:'Raleway',sans-serif;font-weight:800;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--text-mid);margin-bottom:6px}
+  .eq .box .d{font-size:.92rem;color:var(--text-mid);line-height:1.4}
+  .eq .op{display:flex;align-items:center;font-family:'Bebas Neue',sans-serif;font-size:2.2rem;color:var(--navy)}
+  .eq .box.own{border-top:4px solid var(--teal)}
+  .eq .box.owe{border-top:4px solid var(--coral)}
+  .eq .box.net{border-top:4px solid var(--gold);background:var(--cream)}
+
+  figure{margin:24px 0 0}
+  figure svg{width:100%;height:auto;display:block;background:#fff;border:1px solid #e4dcc4;border-radius:12px;padding:16px;box-shadow:0 4px 18px rgba(12,34,64,.08)}
+  .band-navy figure svg{background:#0f2a4d;border-color:rgba(197,223,252,.18)}
+  figcaption{font-size:.92rem;color:var(--text-mid);margin-top:12px;font-style:italic}
+  .band-navy figcaption{color:rgba(197,223,252,.7)}
+
+  .math{background:#fff;border:1px solid #e4dcc4;border-radius:12px;padding:8px 4px;margin:24px 0;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+  .math .row{display:flex;align-items:baseline;gap:14px;padding:14px 20px;border-bottom:1px solid #f0ead8}
+  .math .row:last-child{border-bottom:none}
+  .math .lab{flex:1;font-size:1rem;color:var(--text-mid)}
+  .math .lab b{color:var(--navy)}
+  .math .val{font-family:'Bebas Neue',sans-serif;font-size:1.7rem;color:var(--navy);white-space:nowrap}
+  .math .row.out .val{color:var(--coral-deep)}
+  .math .row.out{background:var(--cream)}
+
+  .punch{font-family:'Raleway',sans-serif;font-weight:800;font-size:clamp(1.25rem,3.2vw,1.7rem);line-height:1.3;color:var(--cream);margin:8px 0 0}
+  .punch span{color:var(--gold)}
+
+  .seen{border:1px solid rgba(197,223,252,.25);border-radius:10px;padding:22px 24px;margin-top:30px;background:rgba(255,255,255,.04)}
+  .seen .h{font-family:'Raleway',sans-serif;font-weight:800;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+  .seen p{font-size:1rem;margin-bottom:0;color:var(--sky)}
+
+  .ask{background:var(--navy);color:var(--cream);border-radius:12px;padding:26px 26px;margin:26px 0}
+  .ask .h{font-family:'Raleway',sans-serif;font-weight:800;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+  .ask p{font-size:1.1rem;color:var(--cream);margin-bottom:0}
+  .ask p strong{color:var(--gold)}
+
+  .sayit{border-left:4px solid var(--coral);background:var(--offwhite);padding:18px 22px;border-radius:0 8px 8px 0;margin-top:22px}
+  .sayit .h{font-family:'Raleway',sans-serif;font-weight:800;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--coral-deep);margin-bottom:8px}
+  .sayit p{font-style:italic;font-size:1.05rem;color:var(--text-mid);margin-bottom:0}
+
+  .btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+  .btn{display:inline-block;font-family:'Raleway',sans-serif;font-weight:800;font-size:.85rem;letter-spacing:.05em;text-transform:uppercase;padding:14px 26px;border-radius:4px;text-decoration:none}
+  .btn-gold{background:var(--gold);color:var(--navy)}
+  .btn-gold:hover{background:#ffb833}
+  .btn-line{border:2px solid var(--navy);color:var(--navy)}
+  .btn-line:hover{background:var(--navy);color:#fff}
+
+  footer{background:var(--navy);color:rgba(197,223,252,.7);padding:40px 0;border-top:3px solid var(--gold);font-size:.85rem;line-height:1.6}
+  footer .wrap{max-width:760px}
+  footer strong{color:var(--cream)}
+  footer a{color:var(--gold);text-decoration:none;font-weight:700}
+  footer .dis{font-size:.76rem;color:rgba(197,223,252,.45);margin-top:12px}
+
+  .fade{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+  .fade.in{opacity:1;transform:none}
+
+  /* ===== TOP INTERACTIVE ===== */
+  .tldr{background:var(--offwhite);padding:36px 0}
+  .tldr-card{max-width:600px;margin:0 auto;background:#fff;border:1px solid #ece4cf;border-radius:16px;box-shadow:0 12px 38px rgba(12,34,64,.14);padding:30px 30px 28px;text-align:center}
+  .tldr-kicker{display:inline-block;font-family:'Raleway',sans-serif;font-weight:800;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--gold-dim);padding:5px 13px;border-radius:999px;margin-bottom:14px}
+  .tldr-q{font-family:'Raleway',sans-serif;font-weight:900;font-size:1.28rem;color:var(--navy);margin-bottom:2px;line-height:1.2}
+  .tldr-num{font-family:'Bebas Neue',sans-serif;font-size:clamp(3.6rem,15vw,5.4rem);line-height:.92;color:var(--coral-deep);margin:12px 0 2px;transition:color .35s ease,transform .3s ease}
+  .tldr-num.flip{transform:scale(.93)}
+  .tldr-cap{font-family:'Raleway',sans-serif;font-weight:700;font-size:.92rem;color:var(--coral-deep);min-height:1.25em;transition:color .35s ease}
+  .toggle-row{display:flex;align-items:center;gap:14px;justify-content:center;margin:22px auto 0;padding:14px 18px;background:var(--offwhite);border:1px solid #ece4cf;border-radius:12px;max-width:500px;cursor:pointer;user-select:none}
+  .toggle-row:hover{border-color:#e0d6ba}
+  .switch{position:relative;flex-shrink:0;width:52px;height:30px}
+  .switch input{position:absolute;opacity:0;width:100%;height:100%;margin:0;cursor:pointer}
+  .track{position:absolute;inset:0;background:#cfc8b6;border-radius:999px;transition:background .25s ease}
+  .thumb{position:absolute;top:3px;left:3px;width:24px;height:24px;background:#fff;border-radius:50%;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:transform .25s ease}
+  .switch input:checked + .track{background:var(--coral)}
+  .switch input:checked + .track .thumb{transform:translateX(22px)}
+  .switch input:focus-visible + .track{outline:2px solid var(--navy);outline-offset:2px}
+  .tlabel{text-align:left;font-size:.95rem;color:var(--navy);font-weight:700}
+  .reveal2{max-height:0;overflow:hidden;transition:max-height .45s ease}
+  .reveal2.open{max-height:460px}
+  .reveal2-inner{padding-top:22px}
+  .ledger{background:var(--offwhite);border:1px solid #ece4cf;border-radius:10px;padding:6px 16px;text-align:left}
+  .ledger .r{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:11px 0;border-bottom:1px solid #ece4cf}
+  .ledger .r:last-child{border-bottom:none}
+  .ledger .l{font-size:.92rem;color:var(--text-mid)}
+  .ledger .v{font-family:'Bebas Neue',sans-serif;font-size:1.45rem;white-space:nowrap;color:var(--navy)}
+  .ledger .v.good{color:var(--teal)}
+  .ledger .v.bad{color:var(--coral-deep)}
+  .ledger .r.total .l{font-weight:700;color:var(--navy);font-family:'Raleway',sans-serif}
+  .ledger .r.total{background:#fff;margin:0 -16px;padding:12px 16px;border-radius:0 0 10px 10px}
+  .reveal2-note{font-size:.92rem;color:var(--text-mid);margin-top:14px;text-align:center}
+  .reveal2-note a{color:var(--navy);text-decoration:underline;text-decoration-color:var(--gold);text-decoration-thickness:2px;text-underline-offset:2px;font-weight:700}
+
+  @media (max-width:600px){
+    section{padding:48px 0}
+    p{font-size:1.05rem}
+    .eq .op{transform:rotate(90deg);justify-content:center;width:100%;font-size:1.6rem}
+    .eq .box{min-width:100%}
+    .math .val{font-size:1.4rem}
+    .tldr-card{padding:24px 20px}
+    .tlabel{font-size:.9rem}
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <span class="badge">#DoTheMath · Plain-English Edition</span>
+    <h1>Does Joliet own more than it <span>owes</span>?</h1>
+    <p class="sub">It's the same question you'd ask about your own household. Here's Joliet's answer in plain numbers — and why the city's own books already show it owes far more than it owns.</p>
+    <p class="src">Every figure comes from the City of Joliet's own audited annual reports.</p>
+  </div>
+</header>
+
+<!-- TOP INTERACTIVE -->
+<section class="tldr">
+  <div class="wrap">
+    <div class="tldr-card">
+      <span class="tldr-kicker">The 30-second version</span>
+      <p class="tldr-q">Does Joliet own more than it owes?</p>
+      <div class="tldr-num" id="tldrNum">&minus;$1.24B</div>
+      <div class="tldr-cap" id="tldrCap">What the city's books already show</div>
+      <label class="toggle-row" for="tldrToggle">
+        <span class="switch"><input type="checkbox" id="tldrToggle" aria-describedby="tldrCap"><span class="track"><span class="thumb"></span></span></span>
+        <span class="tlabel">Now add the infrastructure repair bill the books still leave out</span>
+      </label>
+      <div class="reveal2" id="tldrReveal">
+        <div class="reveal2-inner">
+          <div class="ledger">
+            <div class="r"><span class="l">On the books (net financial position)</span><span class="v bad">&minus;$1.24B</span></div>
+            <div class="r"><span class="l">Estimated repair bill (not on the books)</span><span class="v bad">&minus;$1.4B</span></div>
+            <div class="r total"><span class="l">Closer to the real picture</span><span class="v bad">&asymp; &minus;$2.7B</span></div>
+          </div>
+          <p class="reveal2-note">The first number is already printed in the audit. <a href="#start">Keep scrolling</a> for how both are built &mdash; in plain English.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KITCHEN TABLE -->
+<section class="band-cream" id="start">
+  <div class="wrap">
+    <h2>Start at the kitchen table</h2>
+    <p class="lead">Picture adding up your family's finances. On one side, everything you have that's basically money — checking, savings, investments. On the other, everything you owe — credit cards, the car loan, the mortgage. Subtract. What's left tells you whether you're ahead or behind.</p>
+
+    <div class="eq">
+      <div class="box own"><div class="t">What you own</div><div class="d">Cash, savings &amp; investments</div></div>
+      <div class="op">&minus;</div>
+      <div class="box owe"><div class="t">What you owe</div><div class="d">Loans, cards &amp; other debts</div></div>
+      <div class="op">=</div>
+      <div class="box net"><div class="t">Where you stand</div><div class="d">Ahead, or behind</div></div>
+    </div>
+
+    <p style="margin-top:22px;">A city has this exact number. Accountants call it the <strong>net financial position</strong>. It answers one human question: <strong>does the city own more than it owes?</strong> Almost no city puts it on a billboard — so we did the math from Joliet's own report.</p>
+
+    <div class="aside">
+      <div class="who">Why shrink the number?</div>
+      <p>A billion dollars is an abstraction — too big to picture. The same bill split across your street is a conversation. So alongside the citywide total, we also show the numbers per household. It's like judging a car by miles per <em>gallon</em> instead of miles per tank: the smaller, shared number is the one people can actually picture and weigh.</p>
+    </div>
+  </div>
+</section>
+
+<!-- THE ANSWER -->
+<section class="band-white">
+  <div class="wrap">
+    <span class="kicker bad">What the books show</span>
+    <h2>Joliet is behind &mdash; and the books say so out loud</h2>
+    <div class="bignum answer-num">&minus;$1.24B</div>
+    <p class="lead">Joliet owes about <strong>$1.24 billion more</strong> than it holds in money-like assets. Most cities that look this far underwater need a hidden bill to prove it. Joliet doesn't: the hole is already printed in the audit.</p>
+    <p class="perhh">Split across every household in town, that's about <span>&minus;$24,300 owed</span> per household.</p>
+
+    <div class="aside">
+      <div class="who">But doesn't the audit say net position is only &minus;$25 million?</div>
+      <p>It does &mdash; the official "total net position" is about &minus;$25 million. But it gets there by counting roads, pipes, and buildings (about $1.2 billion) as assets. The city can't sell those to pay pensions or bondholders. Net financial position is the stricter, more honest test: the money the city actually has, against what it owes &mdash; and that's &minus;$1.24 billion.</p>
+    </div>
+
+    <figure class="fade">
+<svg viewBox="0 0 760 372" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Joliet net financial position by year 2014 to 2024: negative every year and falling from minus 82 million to minus 1.24 billion dollars">
+<line x1="56" y1="58" x2="748" y2="58" stroke="#0c2240" stroke-width="1.5"/>
+<text x="52" y="63" text-anchor="end" font-family="Lato,sans-serif" font-size="13" fill="#6b7280">$0</text>
+<line x1="156.7" y1="44" x2="156.7" y2="328" stroke="rgba(12,34,64,0.33)" stroke-width="1.3" stroke-dasharray="4,3"/>
+<text x="156.7" y="54" text-anchor="middle" font-family="Raleway,sans-serif" font-weight="800" font-size="10" fill="#b87d00" letter-spacing="0.05em">GASB 68</text>
+<line x1="342.2" y1="44" x2="342.2" y2="328" stroke="rgba(12,34,64,0.33)" stroke-width="1.3" stroke-dasharray="4,3"/>
+<text x="342.2" y="54" text-anchor="middle" font-family="Raleway,sans-serif" font-weight="800" font-size="10" fill="#b87d00" letter-spacing="0.05em">GASB 75</text>
+<rect x="74.9" y="58.0" width="40" height="16.6" rx="3" fill="#fd6262"/>
+<text x="94.9" y="89.6" text-anchor="middle" font-family="Bebas Neue,sans-serif" font-size="14.5" fill="#0c2240">−$82M</text>
+<text x="94.9" y="364" text-anchor="middle" font-family="Lato,sans-serif" font-size="13" fill="#6b7280">2014</text>
+<rect x="136.7" y="58.0" width="40" height="93.2" rx="3" fill="#fd6262"/>
+<text x="156.7" y="166.2" text-anchor="middle" font-family="Bebas Neue,sans-serif" font-size="14.5" fill="#0c2240">−$459M</text>
+<text x="156.7" y="364" text-anchor="middle" font-family="Lato,sans-serif" font-size="13" fill="#6b7280">2015</text>
+<rect x="198.5" y="58.0" width="40" height="101.8" rx="3" fill="#fd6262"/>
+<text x="218.5" y="174.8" text-anchor="middle" font-family="Bebas Neue,sans-serif" font-size="14.5" fill="#0c2240">−$502M</text>
+<text x="218.5" y="364" text-anchor="middle" font-family="Lato,sans-serif" font-size="13" fill="#6b7280">2016</text>
+<rect x="260.4" y="58.0" width="40" height="110.0" rx="3" fill="#fd6262"/>
+<text x="280.4" y="183.0" text-anchor="middle" font-family="Bebas Neue,sans-serif" font-size="14.5" fill="#0c2240">−$542M</text>
+<text x="280.4" y="364" text-anchor="middle" font-family="Lato,sans-serif" font-size="13" fill="#6b7280">2017</text>
+<rect x="322.2" y="58.0" width="40" height="179.2" rx="3" fill="#fd6262"/>
+<text x="342.2" y="252.2" text-anchor="middle" font-family="Bebas Neue,sans-serif" font-size="14.5" fill="#0c2240">−$882M</text>
+<text x="342.2" y="364" text-anchor="middle" font-family="Lato,sans-serif" font-size="13" fill="#6b7280">2018</text>
+<rect x="384.0" y="58.0" width="40" height="189.5" rx="3" fill="#d23b3b"/>
+<text x="404.0" y="262.5" text-anchor="middle" font-family="Bebas Neue,sans-serif" font-size="14.5" fill="#0c2240">−$933M</text>
+<text x="404.0" y="364" text-anchor="middle" font-family="Lato,sans-serif" font-size="13" fill="#6b7280">2019</text>
+<rect x="445.8" y="58.0" width="40" height="202.8" rx="3" fill="#d23b3b"/>
+<text x="465.8" y="275.8" text-anchor="middle" font-family="Bebas Neue,sans-serif" font-size="14.5" fill="#0c2240">−$998M</text>
+<text x="465.8" y="364" text-anchor="middle" font-family="Lato,sans-serif" font-size="13" fill="#6b7280">2020</text>
+<rect x="507.6" y="58.0" width="40" height="200.5" rx="3" fill="#d23b3b"/>
+<text x="527.6" y="273.5" text-anchor="middle" font-family="Bebas Neue,sans-serif" font-size="14.5" fill="#0c2240">−$988M</text>
+<text x="527.6" y="364" text-anchor="middle" font-family="Lato,sans-serif" font-size="13" fill="#6b7280">2021</text>
+<rect x="569.5" y="58.0" width="40" height="217.6" rx="3" fill="#d23b3b"/>
+<text x="589.5" y="290.6" text-anchor="middle" font-family="Bebas Neue,sans-serif" font-size="14.5" fill="#0c2240">−$1.07B</text>
+<text x="589.5" y="364" text-anchor="middle" font-family="Lato,sans-serif" font-size="13" fill="#6b7280">2022</text>
+<rect x="631.3" y="58.0" width="40" height="235.8" rx="3" fill="#d23b3b"/>
+<text x="651.3" y="308.8" text-anchor="middle" font-family="Bebas Neue,sans-serif" font-size="14.5" fill="#0c2240">−$1.16B</text>
+<text x="651.3" y="364" text-anchor="middle" font-family="Lato,sans-serif" font-size="13" fill="#6b7280">2023</text>
+<rect x="693.1" y="58.0" width="40" height="252.1" rx="3" fill="#d23b3b"/>
+<text x="713.1" y="325.1" text-anchor="middle" font-family="Bebas Neue,sans-serif" font-size="14.5" fill="#0c2240">−$1.24B</text>
+<text x="713.1" y="364" text-anchor="middle" font-family="Lato,sans-serif" font-size="13" fill="#6b7280">2024</text>
+</svg>
+      <figcaption>The hole, year by year. The two big drops aren't new spending &mdash; they're two accounting rules that finally put old promises on the books: pensions in 2015 (GASB 68) and retiree health care in 2018 (GASB 75). Notice 2014, before either rule: the books looked almost healthy.</figcaption>
+    </figure>
+
+    <p style="margin-top:26px;font-size:1.18rem;color:var(--navy);font-weight:700;">If this were the whole story, it would already be sobering. It gets heavier.</p>
+  </div>
+</section>
+
+<!-- WHAT'S IN THE HOLE -->
+<section class="band-off">
+  <div class="wrap">
+    <span class="kicker bad">What the $1.24 billion is</span>
+    <h2>Mostly promises &mdash; to retirees, and to lenders</h2>
+    <p class="lead">The hole isn't a mystery overspend. It's three real obligations the city has taken on, all owed to real people:</p>
+
+    <div class="math">
+      <div class="row"><div class="lab"><b>Retiree health care</b> the city has promised police, firefighters &amp; staff <span style="font-size:.85rem">(OPEB)</span></div><div class="val">~$500M</div></div>
+      <div class="row"><div class="lab"><b>Pensions</b> for police &amp; firefighters, not yet funded <span style="font-size:.85rem">(net pension liability)</span></div><div class="val">~$390M</div></div>
+      <div class="row"><div class="lab"><b>Debt</b> &mdash; bonds and water/sewer loans, much of it the new Lake Michigan water supply</div><div class="val">~$450M</div></div>
+    </div>
+
+    <p>These are promises made over decades, to people who did the work or lent the money. The striking part isn't that they exist &mdash; it's that until recently they were nowhere on the city's books.</p>
+
+    <div class="aside">
+      <div class="who">We've seen this before</div>
+      <p>In 2015 a new accounting rule (GASB 68) forced cities to put their full pension promises on the books. In 2018 another (GASB 75) added retiree health care. Tens of billions appeared overnight across the country &mdash; debts that had <em>always</em> existed, suddenly visible. In 2014, before those rules, Joliet's books looked like a healthy city's: assets nearly four times its liabilities. The money was always owed. The rules just made Joliet show it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- THE HIDDEN BILL -->
+<section class="band-white">
+  <div class="wrap">
+    <span class="kicker bad">What the books still don't show</span>
+    <h2>And one bill is still in the drawer</h2>
+    <p class="lead">Even after pensions and retiree health care, one real cost is still missing from every statement: what it would take to fix worn-out roads, pipes, and buildings.</p>
+    <p>Joliet's audit already admits the wear &mdash; about <strong>37% of the value</strong> of its roads, pipes, and buildings is used up. It just never adds up what fixing all that would cost. So we used the city's own two numbers &mdash; the method any resident can run with the <a class="il" href="https://www.strongtowns.org/decoder" target="_blank">Strong Towns worksheet</a>:</p>
+
+    <div class="math">
+      <div class="row"><div class="lab">What Joliet's infrastructure <b>cost to build</b></div><div class="val">$1.93B</div></div>
+      <div class="row"><div class="lab">How much is already <b>worn out</b> <span style="font-size:.85rem">(the audit's "accumulated depreciation")</span></div><div class="val">$712M</div></div>
+      <div class="row"><div class="lab">But that's in <b>old dollars</b>. Building costs have roughly doubled in 20 years, so restate it to today's prices&hellip;</div><div class="val">&times;~2</div></div>
+      <div class="row out"><div class="lab"><b>Estimated repair bill</b> the books don't show</div><div class="val">$1.25B&ndash;$1.6B</div></div>
+    </div>
+
+    <p class="perhh" style="color:var(--coral-deep)">Per household, that's another <strong style="color:var(--coral-deep)">$24,000 to $31,000</strong> &mdash; on top of what's already owed.</p>
+    <p style="font-size:.98rem;">This is a back-of-the-envelope range, on purpose. The point isn't the exact figure &mdash; it's that the figure is <strong>large</strong>, and nobody publishes it.</p>
+  </div>
+</section>
+
+<!-- SIDE BY SIDE -->
+<section class="band-navy">
+  <div class="wrap">
+    <h2>Put them next to each other</h2>
+    <figure class="fade">
+<svg viewBox="0 0 720 392" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Per household: about 24,300 dollars already owed versus another 24,000 to 31,000 dollars in deferred repairs">
+<line x1="40" y1="320" x2="690" y2="320" stroke="#3c5a82" stroke-width="1.5"/>
+<rect x="120" y="132.9" width="180" height="187.1" rx="4" fill="#fd6262"/>
+<text x="210" y="118.9" text-anchor="middle" font-family="Bebas Neue,sans-serif" font-size="30" fill="#ff8a8a">−$24,300</text>
+<text x="210" y="344" text-anchor="middle" font-family="Raleway,sans-serif" font-weight="700" font-size="14" fill="#e9f3ff">ALREADY OWED, per household</text>
+<text x="210" y="364" text-anchor="middle" font-family="Lato,sans-serif" font-size="13" fill="#9bb6d6">the part the books already show</text>
+<rect x="420" y="132.1" width="180" height="187.9" rx="4" fill="#fd6262"/>
+<rect x="420" y="78.2" width="180" height="53.9" fill="#fd6262" opacity="0.45"/>
+<text x="510" y="64.2" text-anchor="middle" font-family="Bebas Neue,sans-serif" font-size="30" fill="#ff8a8a">$24K–$31K</text>
+<text x="510" y="344" text-anchor="middle" font-family="Raleway,sans-serif" font-weight="700" font-size="14" fill="#e9f3ff">DEFERRED REPAIRS, per household</text>
+<text x="510" y="364" text-anchor="middle" font-family="Lato,sans-serif" font-size="13" fill="#9bb6d6">on no statement, anywhere</text>
+</svg>
+      <figcaption>Same households. One number the city reports, one it doesn't &mdash; and both point the same way.</figcaption>
+    </figure>
+
+    <p class="punch">A household already <span>$24,300 in the hole</span>, with another ~$28,000 repair bill coming that no statement shows.</p>
+    <p style="margin-top:16px">That's the gap between how Joliet's books are <em>summarized</em> and what the city actually owes the people who live here.</p>
+
+    <div class="seen">
+      <div class="h">The honest caveat</div>
+      <p>Joliet is not uniquely reckless. The pension and retiree-health holes are shared by cities across Illinois, and a large slice of the debt is the essential ~$1.45&nbsp;billion Lake Michigan water project &mdash; the city's aquifer is projected to run dry by 2030, so new water supply isn't optional. The point isn't blame. It's that these numbers should be in plain view while there's still time to plan around them.</p>
+    </div>
+  </div>
+</section>
+
+<!-- NOT DOOM -->
+<section class="band-cream">
+  <div class="wrap">
+    <h2>This is hard. It's still a to-do list.</h2>
+    <p class="lead">A &minus;$1.24 billion financial position is a genuinely difficult starting point &mdash; harder than most cities face. But a number you can see is a number you can plan around, and Joliet has real strengths: a growing logistics economy, rising property and sales tax bases, and a water investment that secures the city's future.</p>
+    <p>There's also an honest answer nobody likes to say out loud: a city can choose what it takes on next. Every new subdivision, road, and pipe is another maintenance promise owed forever. Funding what's already promised &mdash; and weighing what's added &mdash; are both choices.</p>
+
+    <div class="ask">
+      <div class="h">The asks</div>
+      <p>Ask Joliet for three things: <strong>fund the pension and retiree-health promises on a real, published schedule; publish a "state of good repair" number every year</strong> &mdash; what it would cost to bring what we already own back to good condition; and <strong>weigh every new commitment against what's already owed.</strong> Federal agencies must publish that repair number. New York City's charter requires it. Joliet can too.</p>
+    </div>
+
+    <div class="sayit">
+      <div class="h">Say it this way</div>
+      <p>"These figures come from Joliet's own published reports. The city publishes no single estimate of its deferred repair costs. If this picture is wrong, the city should publish the numbers that show it."</p>
+    </div>
+  </div>
+</section>
+
+<!-- ANYONE -->
+<section class="band-white">
+  <div class="wrap">
+    <h2>Anyone can start this conversation</h2>
+    <p class="lead">You don't need a finance degree. The math is middle-school arithmetic, and every number is public.</p>
+    <p>A neighbor can raise it at a coffee shop. So can a city council member, a budget director, or a CPA who lives and breathes GASB rules &mdash; they'll all recognize the numbers, because the numbers are the city's own. That's the whole point: it's one number, at the kitchen table, that everyone can argue about together.</p>
+    <div class="btns">
+      <a class="btn btn-gold" href="https://www.joliet.gov" target="_blank">Read Joliet's annual report</a>
+      <a class="btn btn-line" href="https://www.strongtowns.org/decoder" target="_blank">Get the worksheet</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <p><strong>How the numbers were built.</strong> <em>Net financial position</em> = Joliet's financial assets (cash, investments, receivables, plus deferred outflows) minus its total liabilities (plus deferred inflows), total primary government, from the 2024 Annual Comprehensive Financial Report; the yearly figures cover 2014&ndash;2024. The two large step-downs follow accounting standards GASB&nbsp;68 (pensions, first reflected in 2015) and GASB&nbsp;75 (retiree health/OPEB, 2018), which brought existing obligations onto the statements. The <em>repair-bill estimate</em> follows the Strong Towns <a href="https://www.strongtowns.org/decoder" target="_blank">Infrastructure Liability Worksheet</a>: the audit's accumulated depreciation ($711.6M) restated to today's construction prices (&times;1.75 to &times;2.25). Per-household figures use about 51,055 Joliet households (U.S. Census, ACS 2024).</p>
+    <p class="dis">An independent #DoTheMath explainer, for educational purposes. Not affiliated with or endorsed by the City of Joliet. The repair-bill figure is a deliberately rough range; verify against the source documents before relying on it.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var fo=new IntersectionObserver(function(es){es.forEach(function(en){
+    if(en.isIntersecting){en.target.classList.add('in');fo.unobserve(en.target);}});},{threshold:.15});
+  document.querySelectorAll('.fade').forEach(function(el){fo.observe(el);});
+})();
+(function(){
+  var t=document.getElementById('tldrToggle'),num=document.getElementById('tldrNum'),
+      cap=document.getElementById('tldrCap'),rev=document.getElementById('tldrReveal');
+  if(!t)return;
+  var ON={n:'≈ −$2.7B',c:'With the off-the-books repair bill added'},
+      OFF={n:'−$1.24B',c:"What the city's books already show"};
+  t.addEventListener('change',function(){
+    var on=t.checked;
+    num.classList.add('flip');
+    setTimeout(function(){
+      num.textContent=on?ON.n:OFF.n;
+      cap.textContent=on?ON.c:OFF.c;
+      num.classList.remove('flip');
+    },150);
+    rev.classList.toggle('open',on);
+  });
+})();
+</script>
+</body>
+</html>
